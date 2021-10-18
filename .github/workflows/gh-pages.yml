@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '12.x'
       - name: Setup Docsy
-        run: git submodule update --init --recursive themes/docsy && sudo npm install -D --save autoprefixer && sudo npm install -D --save postcss-cli
+        run: git submodule update --init --recursive themes/docsy && npm install -D --save autoprefixer && npm install -D --save postcss-cli
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
