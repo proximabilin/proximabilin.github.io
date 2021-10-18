@@ -51,7 +51,7 @@ package main import ( &#34;log&#34; &#34;proxima-be-sdk-go/proxima/se/sdk&#34; )
  SDK中已封装了与BE通信的协议类型，如想进一步了解协议内容，请参考Restful API章节  示例： 创建BE客户端
 package main import ( &#34;log&#34; &#34;proxima-be-sdk-go/proxima/se/sdk&#34; ) func main() { // Create client of BE with GRPC protocol and connect to localhost:16000 	client, err := sdk.">
 
-<meta itemprop="wordCount" content="1375">
+<meta itemprop="wordCount" content="1376">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Golang SDK"/>
 <meta name="twitter:description" content="用户可以使用Golang SDK进行集合管理、文档的增删该查等功能
@@ -152,7 +152,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.63ad7b186fbb7e30ddec920643d508c7.json"
+  data-offline-search-index-json-src="/offline-search-index.1d943918baba8c26308e483a7086c3b6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -179,7 +179,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.63ad7b186fbb7e30ddec920643d508c7.json"
+  data-offline-search-index-json-src="/offline-search-index.1d943918baba8c26308e483a7086c3b6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -486,19 +486,20 @@ if (!doNotTrack) {
 		<span style="color:#000">CollectionName</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#4e9a06">&#34;example&#34;</span><span style="color:#000;font-weight:bold">,</span>
 		<span style="color:#000">MaxDocsPerSegment</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic">// 0 means unlimited, which is equal max value of system
 </span><span style="color:#8f5902;font-style:italic"></span>		<span style="color:#000">ForwardColumns</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#000;font-weight:bold">[]</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;forward&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#4e9a06">&#34;forward1&#34;</span><span style="color:#000;font-weight:bold">},</span>
-		<span style="color:#000">Columns</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ColumnIndex</span><span style="color:#000;font-weight:bold">{{</span>
-			<span style="color:#000">Name</span><span style="color:#000;font-weight:bold">:</span>        <span style="color:#4e9a06">&#34;column&#34;</span><span style="color:#000;font-weight:bold">,</span>
-			<span style="color:#000">IndexType</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// 0 means default index, which is sdk.ProximaGraphIndex
-</span><span style="color:#8f5902;font-style:italic"></span>			<span style="color:#000">DataType</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// 0 means default, which is sdk.VectorFP32
-</span><span style="color:#8f5902;font-style:italic"></span>			<span style="color:#000">Dimension</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// Required field, no default value, 0 is not legal argument
-</span><span style="color:#8f5902;font-style:italic"></span>			<span style="color:#000">ExtraParams</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;ef_search&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;200&#34;</span><span style="color:#000;font-weight:bold">},</span> <span style="color:#8f5902;font-style:italic">// Advanced params
-</span><span style="color:#8f5902;font-style:italic"></span>		<span style="color:#000;font-weight:bold">},</span> <span style="color:#000;font-weight:bold">{</span>
-			<span style="color:#000">Name</span><span style="color:#000;font-weight:bold">:</span>        <span style="color:#4e9a06">&#34;column1&#34;</span><span style="color:#000;font-weight:bold">,</span>
-			<span style="color:#000">IndexType</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ProximaGraphIndex</span><span style="color:#000;font-weight:bold">,</span>
-			<span style="color:#000">DataType</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">VectorFP16</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic">// Index type is fp16, query could be fp32 for lack of language types
-</span><span style="color:#8f5902;font-style:italic"></span>			<span style="color:#000">Dimension</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">128</span><span style="color:#000;font-weight:bold">,</span>
-			<span style="color:#000">ExtraParams</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">{},</span>
-		<span style="color:#000;font-weight:bold">},</span>
+		<span style="color:#000">Columns</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[]</span><span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ColumnIndex</span><span style="color:#000;font-weight:bold">{</span>
+			<span style="color:#000;font-weight:bold">{</span>
+				<span style="color:#000">Name</span><span style="color:#000;font-weight:bold">:</span>        <span style="color:#4e9a06">&#34;column&#34;</span><span style="color:#000;font-weight:bold">,</span>
+				<span style="color:#000">IndexType</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// 0 means default index, which is sdk.ProximaGraphIndex
+</span><span style="color:#8f5902;font-style:italic"></span>				<span style="color:#000">DataType</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// 0 means default, which is sdk.VectorFP32
+</span><span style="color:#8f5902;font-style:italic"></span>				<span style="color:#000">Dimension</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">,</span>                                     <span style="color:#8f5902;font-style:italic">// Required field, no default value, 0 is not legal argument
+</span><span style="color:#8f5902;font-style:italic"></span>				<span style="color:#000">ExtraParams</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">{</span><span style="color:#4e9a06">&#34;ef_search&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;200&#34;</span><span style="color:#000;font-weight:bold">},</span> <span style="color:#8f5902;font-style:italic">// Advanced params
+</span><span style="color:#8f5902;font-style:italic"></span>			<span style="color:#000;font-weight:bold">},</span> <span style="color:#000;font-weight:bold">{</span>
+				<span style="color:#000">Name</span><span style="color:#000;font-weight:bold">:</span>        <span style="color:#4e9a06">&#34;column1&#34;</span><span style="color:#000;font-weight:bold">,</span>
+				<span style="color:#000">IndexType</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">ProximaGraphIndex</span><span style="color:#000;font-weight:bold">,</span>
+				<span style="color:#000">DataType</span><span style="color:#000;font-weight:bold">:</span>    <span style="color:#000">sdk</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">VectorFP16</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic">// Index type is fp16, query could be fp32 for lack of language types
+</span><span style="color:#8f5902;font-style:italic"></span>				<span style="color:#000">Dimension</span><span style="color:#000;font-weight:bold">:</span>   <span style="color:#0000cf;font-weight:bold">128</span><span style="color:#000;font-weight:bold">,</span>
+				<span style="color:#000">ExtraParams</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">map</span><span style="color:#000;font-weight:bold">[</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">]</span><span style="color:#204a87;font-weight:bold">string</span><span style="color:#000;font-weight:bold">{},</span>
+			<span style="color:#000;font-weight:bold">},</span>
 		<span style="color:#000;font-weight:bold">},</span>
 		<span style="color:#000">Repository</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#204a87;font-weight:bold">nil</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#8f5902;font-style:italic">// No repository attached
 </span><span style="color:#8f5902;font-style:italic"></span>	<span style="color:#000;font-weight:bold">}</span>
