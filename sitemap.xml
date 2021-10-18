@@ -2,63 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/introduction/introduction/</loc>
+    <loc>/docs/introduction/introduction/</loc>
   </url><url>
-    <loc>/gettingstarted/installation/</loc>
+    <loc>/docs/gettingstarted/installation/</loc>
   </url><url>
-    <loc>/gettingstarted/example_usage/</loc>
+    <loc>/docs/gettingstarted/example_usage/</loc>
   </url><url>
-    <loc>/gettingstarted/</loc>
+    <loc>/docs/gettingstarted/</loc>
   </url><url>
-    <loc>/advancedguides/server_config/</loc>
+    <loc>/docs/advancedguides/server_config/</loc>
   </url><url>
-    <loc>/advancedguides/meta_management/</loc>
+    <loc>/docs/advancedguides/meta_management/</loc>
   </url><url>
-    <loc>/advancedguides/monitor/</loc>
+    <loc>/docs/advancedguides/monitor/</loc>
   </url><url>
-    <loc>/advancedguides/repository/</loc>
+    <loc>/docs/advancedguides/repository/</loc>
   </url><url>
-    <loc>/advancedguides/performance/</loc>
+    <loc>/docs/advancedguides/performance/</loc>
   </url><url>
-    <loc>/advancedguides/tools/</loc>
+    <loc>/docs/advancedguides/tools/</loc>
   </url><url>
-    <loc>/advancedguides/</loc>
+    <loc>/docs/advancedguides/</loc>
   </url><url>
-    <loc>/apireference/http/</loc>
+    <loc>/docs/apireference/http/</loc>
   </url><url>
-    <loc>/apireference/</loc>
+    <loc>/docs/apireference/</loc>
   </url><url>
-    <loc>/sdkreference/python/</loc>
+    <loc>/docs/sdkreference/python/</loc>
   </url><url>
-    <loc>/sdkreference/cpp/</loc>
+    <loc>/docs/sdkreference/cpp/</loc>
   </url><url>
-    <loc>/sdkreference/java/</loc>
+    <loc>/docs/sdkreference/java/</loc>
   </url><url>
-    <loc>/sdkreference/go/</loc>
+    <loc>/docs/sdkreference/go/</loc>
   </url><url>
-    <loc>/sdkreference/</loc>
+    <loc>/docs/sdkreference/</loc>
   </url><url>
-    <loc>/faq/common_faq/</loc>
+    <loc>/docs/faq/common_faq/</loc>
   </url><url>
-    <loc>/faq/performance_faq/</loc>
+    <loc>/docs/faq/performance_faq/</loc>
   </url><url>
-    <loc>/faq/deployment_faq/</loc>
+    <loc>/docs/faq/deployment_faq/</loc>
   </url><url>
-    <loc>/faq/</loc>
+    <loc>/docs/faq/</loc>
   </url><url>
-    <loc>/release/release/</loc>
+    <loc>/docs/release/release/</loc>
   </url><url>
-    <loc>/release/</loc>
+    <loc>/docs/release/</loc>
   </url><url>
-    <loc>/benchmark/benchmark/</loc>
+    <loc>/docs/benchmark/benchmark/</loc>
   </url><url>
-    <loc>/benchmark/</loc>
+    <loc>/docs/benchmark/</loc>
+  </url><url>
+    <loc>/docs/</loc>
+  </url><url>
+    <loc>/docs/faq/sample/</loc>
   </url><url>
     <loc>/</loc>
-  </url><url>
-    <loc>/faq/sample/</loc>
-  </url><url>
-    <loc>/introduction/</loc>
   </url><url>
     <loc>/search/</loc>
   </url>
