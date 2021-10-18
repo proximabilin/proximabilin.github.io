@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,20 +17,35 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Proxima</title>
+<title>服务配置 | Proxima</title>
 
 
   
-  <meta name="description" content="">
-<meta property="og:title" content="文档" />
-<meta property="og:description" content="高性能向量检索引擎" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" /><meta property="og:site_name" content="Proxima" />
+  <meta name="description" content="ProximaBE 设计时遵循最简配置原则，最大化降低用户启动成本，用户大部分场景直接使用默认配置文件即可。当然我们也开放了诸如日志、线程、网络端口等配置项，供用户根据自己场景配置。
+1. 文件目录
+ProximaBE 服务部署完之后，典型的文件结构如下:
+proxima-be/
+├── conf …">
+<meta property="og:title" content="服务配置" />
+<meta property="og:description" content="ProximaBE 设计时遵循最简配置原则，最大化降低用户启动成本，用户大部分场景直接使用默认配置文件即可。当然我们也开放了诸如日志、线程、网络端口等配置项，供用户根据自己场景配置。
+1. 文件目录 ProximaBE 服务部署完之后，典型的文件结构如下:
+proxima-be/ ├── conf │ └── proxima_be.conf ├── data │ ├── plants │ │ ├── data.del │ │ ├── data.fwd.0 │ │ ├── data.id │ │ ├── data.lsn │ │ ├── data.manifest │ │ └── data.pxa.image_vector.0 │ └── proxima_be.sqlite └── log ├── proxima_be.log.ERROR -&gt; proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO -&gt; proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING -&gt; proxima_be.log.WARNING.20210331-144121.10 ├── proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING.20210331-144121.10 └── start.log  conf目录，主要是服务静态配置，服务启动时会一次性加载生效 data目录，主要是保存元数据以及集合数据 log目录，保存日志数据，默认按2G大小切割  2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/advancedguides/server_config/" /><meta property="article:section" content="AdvancedGuides" />
 
-<meta itemprop="name" content="文档">
-<meta itemprop="description" content="高性能向量检索引擎"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="文档"/>
-<meta name="twitter:description" content="高性能向量检索引擎"/>
+<meta property="og:site_name" content="Proxima" />
+
+<meta itemprop="name" content="服务配置">
+<meta itemprop="description" content="ProximaBE 设计时遵循最简配置原则，最大化降低用户启动成本，用户大部分场景直接使用默认配置文件即可。当然我们也开放了诸如日志、线程、网络端口等配置项，供用户根据自己场景配置。
+1. 文件目录 ProximaBE 服务部署完之后，典型的文件结构如下:
+proxima-be/ ├── conf │ └── proxima_be.conf ├── data │ ├── plants │ │ ├── data.del │ │ ├── data.fwd.0 │ │ ├── data.id │ │ ├── data.lsn │ │ ├── data.manifest │ │ └── data.pxa.image_vector.0 │ └── proxima_be.sqlite └── log ├── proxima_be.log.ERROR -&gt; proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO -&gt; proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING -&gt; proxima_be.log.WARNING.20210331-144121.10 ├── proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING.20210331-144121.10 └── start.log  conf目录，主要是服务静态配置，服务启动时会一次性加载生效 data目录，主要是保存元数据以及集合数据 log目录，保存日志数据，默认按2G大小切割  2.">
+
+<meta itemprop="wordCount" content="208">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="服务配置"/>
+<meta name="twitter:description" content="ProximaBE 设计时遵循最简配置原则，最大化降低用户启动成本，用户大部分场景直接使用默认配置文件即可。当然我们也开放了诸如日志、线程、网络端口等配置项，供用户根据自己场景配置。
+1. 文件目录 ProximaBE 服务部署完之后，典型的文件结构如下:
+proxima-be/ ├── conf │ └── proxima_be.conf ├── data │ ├── plants │ │ ├── data.del │ │ ├── data.fwd.0 │ │ ├── data.id │ │ ├── data.lsn │ │ ├── data.manifest │ │ └── data.pxa.image_vector.0 │ └── proxima_be.sqlite └── log ├── proxima_be.log.ERROR -&gt; proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO -&gt; proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING -&gt; proxima_be.log.WARNING.20210331-144121.10 ├── proxima_be.log.ERROR.20210331-144121.10 ├── proxima_be.log.INFO.20210331-105941.10 ├── proxima_be.log.WARNING.20210331-144121.10 └── start.log  conf目录，主要是服务静态配置，服务启动时会一次性加载生效 data目录，主要是保存元数据以及集合数据 log目录，保存日志数据，默认按2G大小切割  2."/>
 
 
 
@@ -71,7 +85,7 @@ if (!doNotTrack) {
 
 
   </head>
-  <body class="td-home">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -121,6 +135,200 @@ if (!doNotTrack) {
     <div class="container-fluid td-default td-outer">
       <main role="main" class="td-main">
         
+
+<p>ProximaBE 设计时遵循最简配置原则，最大化降低用户启动成本，用户大部分场景直接使用默认配置文件即可。当然我们也开放了诸如日志、线程、网络端口等配置项，供用户根据自己场景配置。</p>
+<h2 id="1-文件目录">1. 文件目录</h2>
+<p>ProximaBE 服务部署完之后，典型的文件结构如下:</p>
+<pre tabindex="0"><code>proxima-be/
+├── conf
+│   └── proxima_be.conf
+├── data
+│   ├── plants
+│   │   ├── data.del
+│   │   ├── data.fwd.0
+│   │   ├── data.id
+│   │   ├── data.lsn
+│   │   ├── data.manifest
+│   │   └── data.pxa.image_vector.0
+│   └── proxima_be.sqlite
+└── log
+    ├── proxima_be.log.ERROR -&gt; proxima_be.log.ERROR.20210331-144121.10
+    ├── proxima_be.log.INFO -&gt; proxima_be.log.INFO.20210331-105941.10
+    ├── proxima_be.log.WARNING -&gt; proxima_be.log.WARNING.20210331-144121.10
+    ├── proxima_be.log.ERROR.20210331-144121.10
+    ├── proxima_be.log.INFO.20210331-105941.10
+    ├── proxima_be.log.WARNING.20210331-144121.10
+    └── start.log
+</code></pre><ul>
+<li>conf目录，主要是服务静态配置，服务启动时会一次性加载生效</li>
+<li>data目录，主要是保存元数据以及集合数据</li>
+<li>log目录，保存日志数据，默认按2G大小切割</li>
+</ul>
+<h2 id="2-配置项说明">2. 配置项说明</h2>
+<p>配置项主要是指 proxima_be.conf 的结构，我们按主体功能将配置项分成4个部分:</p>
+<ul>
+<li>CommonConfig， 通用配置，包括网络端口、日志等配置项</li>
+<li>QueryConfig，查询配置，包括查询线程数配置项</li>
+<li>IndexConfig，写入配置，包括写入线程管理、限速等配置项</li>
+<li>MetaConfig， 元数据管理配置</li>
+</ul>
+<p>proxima_be.conf 一份典型的默认配置如下，下面我们将详细介绍每个配置项的功能</p>
+<pre tabindex="0"><code>common_config {
+	grpc_listen_port: 16000
+	http_listen_port: 16001
+	logger_type: &quot;AppendLogger&quot;
+	log_directory: &quot;./log/&quot;
+	log_file: &quot;proxima_be.log&quot;
+	log_level: 1
+}
+
+query_config {
+	query_thread_count: 8
+}
+
+index_config {
+	max_build_qps: 0
+	index_directory: &quot;./&quot;
+	flush_internal: 300
+}
+
+meta_config {
+	meta_uri: &quot;sqlite:///proxima_be_meta.sqlite&quot;
+}
+</code></pre><h3 id="21-commonconfig">2.1 CommonConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必需</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grpc_listen_port</td>
+<td>uint32</td>
+<td>16000</td>
+<td>否</td>
+<td>grpc协议监听端口</td>
+</tr>
+<tr>
+<td>http_listen_port</td>
+<td>uint32</td>
+<td>16001</td>
+<td>否</td>
+<td>http协议监听端口</td>
+</tr>
+<tr>
+<td>logger_type</td>
+<td>string</td>
+<td>&ldquo;AppendLogger&rdquo;</td>
+<td>否</td>
+<td>目前支持两种Logger<br>AppendLogger&ndash;自动增加切割日志<br>SysLogger&ndash;打印到系统日志</td>
+</tr>
+<tr>
+<td>log_directory</td>
+<td>string</td>
+<td>&ldquo;./log/&rdquo;</td>
+<td>否</td>
+<td>日志目录</td>
+</tr>
+<tr>
+<td>log_file</td>
+<td>string</td>
+<td>&ldquo;proxima_be.log&rdquo;</td>
+<td>否</td>
+<td>日志名称</td>
+</tr>
+<tr>
+<td>log_level</td>
+<td>uint32</td>
+<td>2</td>
+<td>否</td>
+<td>最低打印日志级别 <br>1&ndash;DEBUG<br>2&ndash;INFO<br>3&ndash;WARN<br>4&ndash;ERROR<br>5&ndash;FATAL</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-queryconfig">2.2 QueryConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必需</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query_thread_count</td>
+<td>uint32</td>
+<td>8</td>
+<td>否</td>
+<td>查询的线程数据量，这里一般建议配置为<br> 机器核数 ，写入和查询复用同一个线程池</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-indexconfig">2.3 IndexConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必需</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max_build_qps</td>
+<td>uint32</td>
+<td>0</td>
+<td>否</td>
+<td>写入限速，默认为0，代表不开限速功能</td>
+</tr>
+<tr>
+<td>index_directory</td>
+<td>string</td>
+<td>&ldquo;./&rdquo;</td>
+<td>否</td>
+<td>索引目录，默认为当前目录</td>
+</tr>
+<tr>
+<td>flush_internal</td>
+<td>uint32</td>
+<td>300</td>
+<td>否</td>
+<td>内存数据定期同步间隔，单位为秒</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-metaconfig">2.4 MetaConfig</h3>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必需</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>meta_uri</td>
+<td>string</td>
+<td>&ldquo;sqlite://&rdquo;</td>
+<td>否</td>
+<td>元数据存储位置，默认为二进制当前目录</td>
+</tr>
+</tbody>
+</table>
+
 
 
       </main>

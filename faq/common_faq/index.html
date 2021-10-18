@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,20 +17,69 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Proxima</title>
+<title>常见错误 | Proxima</title>
 
 
   
-  <meta name="description" content="">
-<meta property="og:title" content="文档" />
-<meta property="og:description" content="高性能向量检索引擎" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" /><meta property="og:site_name" content="Proxima" />
+  <meta name="description" content="1、ProximaBE 错误
+1.1 基础错误
 
-<meta itemprop="name" content="文档">
-<meta itemprop="description" content="高性能向量检索引擎"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="文档"/>
-<meta name="twitter:description" content="高性能向量检索引擎"/>
+
+
+错误码
+错误原因
+
+
+
+
+1000
+运行时错误
+
+
+1001
+逻辑错误
+
+
+1002
+状态错误
+
+
+1003
+载入配置文件错误
+
+
+1004
+配置文件错误
+
+
+1005
+参数无效
+
+
+1006
+未初始化
+
+
+1007
+打开文件错误
+
+
+1008
+ …">
+<meta property="og:title" content="常见错误" />
+<meta property="og:description" content="1、ProximaBE 错误 1.1 基础错误    错误码 错误原因     1000 运行时错误   1001 逻辑错误   1002 状态错误   1003 载入配置文件错误   1004 配置文件错误   1005 参数无效   1006 未初始化   1007 打开文件错误   1008 读取数据错误   1009 写数据错误   1010 超出限制   1011 序列化错误   1012 反序列化错误   1013 开启服务器错误   1014 尝试访问已经停止的服务器    1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/faq/common_faq/" /><meta property="article:section" content="FAQ" />
+
+<meta property="og:site_name" content="Proxima" />
+
+<meta itemprop="name" content="常见错误">
+<meta itemprop="description" content="1、ProximaBE 错误 1.1 基础错误    错误码 错误原因     1000 运行时错误   1001 逻辑错误   1002 状态错误   1003 载入配置文件错误   1004 配置文件错误   1005 参数无效   1006 未初始化   1007 打开文件错误   1008 读取数据错误   1009 写数据错误   1010 超出限制   1011 序列化错误   1012 反序列化错误   1013 开启服务器错误   1014 尝试访问已经停止的服务器    1.">
+
+<meta itemprop="wordCount" content="403">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常见错误"/>
+<meta name="twitter:description" content="1、ProximaBE 错误 1.1 基础错误    错误码 错误原因     1000 运行时错误   1001 逻辑错误   1002 状态错误   1003 载入配置文件错误   1004 配置文件错误   1005 参数无效   1006 未初始化   1007 打开文件错误   1008 读取数据错误   1009 写数据错误   1010 超出限制   1011 序列化错误   1012 反序列化错误   1013 开启服务器错误   1014 尝试访问已经停止的服务器    1."/>
 
 
 
@@ -71,7 +119,7 @@ if (!doNotTrack) {
 
 
   </head>
-  <body class="td-home">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -121,6 +169,525 @@ if (!doNotTrack) {
     <div class="container-fluid td-default td-outer">
       <main role="main" class="td-main">
         
+
+<h2 id="1proximabe-错误">1、ProximaBE 错误</h2>
+<h3 id="11-基础错误">1.1 基础错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1000</td>
+<td>运行时错误</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>逻辑错误</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>状态错误</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>载入配置文件错误</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>配置文件错误</td>
+</tr>
+<tr>
+<td>1005</td>
+<td>参数无效</td>
+</tr>
+<tr>
+<td>1006</td>
+<td>未初始化</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>打开文件错误</td>
+</tr>
+<tr>
+<td>1008</td>
+<td>读取数据错误</td>
+</tr>
+<tr>
+<td>1009</td>
+<td>写数据错误</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>超出限制</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>序列化错误</td>
+</tr>
+<tr>
+<td>1012</td>
+<td>反序列化错误</td>
+</tr>
+<tr>
+<td>1013</td>
+<td>开启服务器错误</td>
+</tr>
+<tr>
+<td>1014</td>
+<td>尝试访问已经停止的服务器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-格式错误">1.2 格式错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2000</td>
+<td>Collection Name 为空</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>Column Name 为空</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>Column 为空</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>Repository Table 为空</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>Repository Name 为空</td>
+</tr>
+<tr>
+<td>2005</td>
+<td>User Name 为空</td>
+</tr>
+<tr>
+<td>2006</td>
+<td>Password 为空</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>URI 无效</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>Collection Status 无效</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>Record 无效</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>Query 无效</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>Index Data Format 无效</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>Write Request 无效</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>Vector Format 无效</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>Repository Type 无效</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>Data Type 无效</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>Index Type 无效</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>Segment 无效</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>Revision 无效</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>Feature 无效</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Schema 不匹配</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>Magic Number 不匹配</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>Index Column 不匹配</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>Dimension 不匹配</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Data Type 不匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-meta-模块错误">1.3 Meta 模块错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3000</td>
+<td>尝试更新 Status Field （只读）</td>
+</tr>
+<tr>
+<td>3001</td>
+<td>尝试更新 Revision Field （只读）</td>
+</tr>
+<tr>
+<td>3002</td>
+<td>尝试更新 CollectionUID Field （只读）</td>
+</tr>
+<tr>
+<td>3003</td>
+<td>尝试更新 IndexType Field （只读）</td>
+</tr>
+<tr>
+<td>3004</td>
+<td>尝试更新 DataType Field （只读）</td>
+</tr>
+<tr>
+<td>3005</td>
+<td>尝试更新 Parameters Filed （只读）</td>
+</tr>
+<tr>
+<td>3006</td>
+<td>尝试更新 RepositoryType Field （只读）</td>
+</tr>
+<tr>
+<td>3007</td>
+<td>尝试更新 ColumnName Field （只读）</td>
+</tr>
+<tr>
+<td>3008</td>
+<td>每个 Segment 包含 0 个 Docs</td>
+</tr>
+<tr>
+<td>3009</td>
+<td>不支持的链接类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-index-模块错误">1.4 Index 模块错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4000</td>
+<td>Collection 重复</td>
+</tr>
+<tr>
+<td>4001</td>
+<td>Key 重复</td>
+</tr>
+<tr>
+<td>4002</td>
+<td>Collection 不存在</td>
+</tr>
+<tr>
+<td>4003</td>
+<td>Column 不存在</td>
+</tr>
+<tr>
+<td>4004</td>
+<td>Key 不存在</td>
+</tr>
+<tr>
+<td>4005</td>
+<td>Collection 处于 Suspended 状态</td>
+</tr>
+<tr>
+<td>4006</td>
+<td>Segment 丢失</td>
+</tr>
+<tr>
+<td>4007</td>
+<td>Lsn Context 为空</td>
+</tr>
+<tr>
+<td>4008</td>
+<td>超过 Rate Limit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-query-模块错误">1.5 Query 模块错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5000</td>
+<td>Segment 不可访问</td>
+</tr>
+<tr>
+<td>5001</td>
+<td>Forward 列不匹配</td>
+</tr>
+<tr>
+<td>5002</td>
+<td>Results 超过限制</td>
+</tr>
+<tr>
+<td>5003</td>
+<td>Compute Queue 还没准备好</td>
+</tr>
+<tr>
+<td>5004</td>
+<td>任务调度出错</td>
+</tr>
+<tr>
+<td>5005</td>
+<td>Collection 不可访问</td>
+</tr>
+<tr>
+<td>5006</td>
+<td>Task 正在另外一个 coroutine 中运行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-repository-错误">2. Repository 错误</h2>
+<h3 id="21-基础错误">2.1 基础错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1000</td>
+<td>运行时错误</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>逻辑错误</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>载入配置文件错误</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>配置文件错误</td>
+</tr>
+<tr>
+<td>1005</td>
+<td>参数无效</td>
+</tr>
+<tr>
+<td>1006</td>
+<td>未初始化</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>打开文件错误</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>超出限制</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-格式错误">2.2 格式错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020</td>
+<td>Schema 不匹配</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>Magic Number 不匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-和-agent-模块交互错误">2.3 和 Agent 模块交互错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4000</td>
+<td>Collection 重复</td>
+</tr>
+<tr>
+<td>4008</td>
+<td>超过 Rate Limit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-mysql-repository-模块错误">2.4 MySQL repository 模块错误</h3>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20000</td>
+<td>链接 MySQL 失败</td>
+</tr>
+<tr>
+<td>20001</td>
+<td>MySQL Table 无效</td>
+</tr>
+<tr>
+<td>20002</td>
+<td>执行 MySQL 命令错误</td>
+</tr>
+<tr>
+<td>20003</td>
+<td>Table 中没有新数据</td>
+</tr>
+<tr>
+<td>20004</td>
+<td>Row 数据无效</td>
+</tr>
+<tr>
+<td>20005</td>
+<td>不支持的 MySQL 版本</td>
+</tr>
+<tr>
+<td>20006</td>
+<td>执行 Command 失败</td>
+</tr>
+<tr>
+<td>20007</td>
+<td>Binlog dump 失败</td>
+</tr>
+<tr>
+<td>20008</td>
+<td>没有新的 Binlog 数据</td>
+</tr>
+<tr>
+<td>20009</td>
+<td>MySQL 结果无效</td>
+</tr>
+<tr>
+<td>20010</td>
+<td>不支持的 Binglog 格式</td>
+</tr>
+<tr>
+<td>20011</td>
+<td>获取 MySQL 结果失败</td>
+</tr>
+<tr>
+<td>20012</td>
+<td>Binlog 处于 suspended 状态</td>
+</tr>
+<tr>
+<td>20013</td>
+<td>MySQL Handler 未初始化</td>
+</tr>
+<tr>
+<td>20014</td>
+<td>MySQL Handler 重复初始化</td>
+</tr>
+<tr>
+<td>20015</td>
+<td>collection config 无效</td>
+</tr>
+<tr>
+<td>20016</td>
+<td>Collection 不存在</td>
+</tr>
+<tr>
+<td>20017</td>
+<td>RPC 失败</td>
+</tr>
+<tr>
+<td>20018</td>
+<td>Collection 应当终止</td>
+</tr>
+<tr>
+<td>20019</td>
+<td>URI 无效</td>
+</tr>
+<tr>
+<td>20020</td>
+<td>初始化 rpc channel 失败</td>
+</tr>
+<tr>
+<td>20021</td>
+<td>MySQL Handler 无效</td>
+</tr>
+<tr>
+<td>20022</td>
+<td>LSN context 无效</td>
+</tr>
+<tr>
+<td>20023</td>
+<td>没有更多的 Row 数据</td>
+</tr>
+<tr>
+<td>20024</td>
+<td>Schema 发生了变化</td>
+</tr>
+<tr>
+<td>20025</td>
+<td>Server 和 repository 的 version 不匹配</td>
+</tr>
+</tbody>
+</table>
+
 
 
       </main>

@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="alternate" type="application/rss&#43;xml" href="/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,20 +17,35 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Proxima</title>
+<title>常用工具 | Proxima</title>
 
 
   
-  <meta name="description" content="">
-<meta property="og:title" content="文档" />
-<meta property="og:description" content="高性能向量检索引擎" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/" /><meta property="og:site_name" content="Proxima" />
+  <meta name="description" content="在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。
+1. 如何获取
+相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/
+2. admin_client
+2.1 使 …">
+<meta property="og:title" content="常用工具" />
+<meta property="og:description" content="在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。
+1. 如何获取 相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/
+2. admin_client 2.1 使用方法 $ admin_client -h Usage: admin_client &lt;args&gt; Args: --command Command type: create | drop --host The host of proxima be, http port --collection Specify collection name --schema Specify collection schema format --help, -h Display help info --version, -v Dipslay version info 2.2 创建Collection $ admin_client --command create --host 127.0.0.1:16001 --collection test_collection \ --schema &#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;, &#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:8}]}&#39; 2." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/advancedguides/tools/" /><meta property="article:section" content="AdvancedGuides" />
 
-<meta itemprop="name" content="文档">
-<meta itemprop="description" content="高性能向量检索引擎"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="文档"/>
-<meta name="twitter:description" content="高性能向量检索引擎"/>
+<meta property="og:site_name" content="Proxima" />
+
+<meta itemprop="name" content="常用工具">
+<meta itemprop="description" content="在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。
+1. 如何获取 相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/
+2. admin_client 2.1 使用方法 $ admin_client -h Usage: admin_client &lt;args&gt; Args: --command Command type: create | drop --host The host of proxima be, http port --collection Specify collection name --schema Specify collection schema format --help, -h Display help info --version, -v Dipslay version info 2.2 创建Collection $ admin_client --command create --host 127.0.0.1:16001 --collection test_collection \ --schema &#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;, &#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:8}]}&#39; 2.">
+
+<meta itemprop="wordCount" content="227">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常用工具"/>
+<meta name="twitter:description" content="在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。
+1. 如何获取 相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/
+2. admin_client 2.1 使用方法 $ admin_client -h Usage: admin_client &lt;args&gt; Args: --command Command type: create | drop --host The host of proxima be, http port --collection Specify collection name --schema Specify collection schema format --help, -h Display help info --version, -v Dipslay version info 2.2 创建Collection $ admin_client --command create --host 127.0.0.1:16001 --collection test_collection \ --schema &#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;, &#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:8}]}&#39; 2."/>
 
 
 
@@ -71,7 +85,7 @@ if (!doNotTrack) {
 
 
   </head>
-  <body class="td-home">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -121,6 +135,64 @@ if (!doNotTrack) {
     <div class="container-fluid td-default td-outer">
       <main role="main" class="td-main">
         
+
+<p>在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。</p>
+<h2 id="1-如何获取">1. 如何获取</h2>
+<p>相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/</p>
+<h2 id="2-admin_client">2. admin_client</h2>
+<h3 id="21-使用方法">2.1 使用方法</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">admin_client</span>  <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">h</span>
+<span style="color:#000">Usage</span><span style="color:#ce5c00;font-weight:bold">:</span>
+ <span style="color:#000">admin_client</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+
+<span style="color:#000">Args</span><span style="color:#ce5c00;font-weight:bold">:</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span>      <span style="color:#000">Command</span> <span style="color:#000">type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">create</span> <span style="color:#ce5c00;font-weight:bold">|</span> <span style="color:#000">drop</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span>         <span style="color:#000">The</span> <span style="color:#000">host</span> <span style="color:#000">of</span> <span style="color:#000">proxima</span> <span style="color:#000">be</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">http</span> <span style="color:#000">port</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span>   <span style="color:#000">Specify</span> <span style="color:#000">collection</span> <span style="color:#000">name</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">schema</span>       <span style="color:#000">Specify</span> <span style="color:#000">collection</span> <span style="color:#000">schema</span> <span style="color:#000">format</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">help</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">h</span>     <span style="color:#000">Display</span> <span style="color:#000">help</span> <span style="color:#000">info</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">version</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span>  <span style="color:#000">Dipslay</span> <span style="color:#000">version</span> <span style="color:#000">info</span>
+</code></pre></div><h3 id="22-创建collection">2.2 创建Collection</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">admin_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">create</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span> <span style="color:#000">\</span>
+    <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">schema</span> <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;, 
+</span><span style="color:#4e9a06">    &#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:8}]}&#39;</span>
+</code></pre></div><h3 id="23-删除collection">2.3 删除Collection</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">admin_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">drop</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span>
+</code></pre></div><h2 id="3-bench_client">3. bench_client</h2>
+<h3 id="31-使用方法">3.1 使用方法</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">h</span>
+<span style="color:#000">Usage</span><span style="color:#ce5c00;font-weight:bold">:</span>
+ <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">args</span><span style="color:#ce5c00;font-weight:bold">&gt;</span>
+
+<span style="color:#000">Args</span><span style="color:#ce5c00;font-weight:bold">:</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span>        <span style="color:#000">Command</span> <span style="color:#000">type</span><span style="color:#ce5c00;font-weight:bold">:</span> <span style="color:#000">search</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">insert</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">delete</span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#000">update</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span>           <span style="color:#000">The</span> <span style="color:#000">host</span> <span style="color:#000">of</span> <span style="color:#000">proxima</span> <span style="color:#000">be</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span>     <span style="color:#000">Specify</span> <span style="color:#000">collection</span> <span style="color:#000">name</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">column</span>         <span style="color:#000">Specify</span> <span style="color:#000">column</span> <span style="color:#000">name</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">file</span>           <span style="color:#000">Read</span> <span style="color:#000">input</span> <span style="color:#000">data</span> <span style="color:#000">from</span> <span style="color:#000">file</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">protocol</span>       <span style="color:#000">Protocol</span> <span style="color:#000">http</span> <span style="color:#000">or</span> <span style="color:#000">grpc</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">concurrency</span>    <span style="color:#000">Send</span> <span style="color:#000">concurrency </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">default</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">)</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">topk</span>           <span style="color:#000">Topk</span> <span style="color:#000">results </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">default</span> <span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">)</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">perf</span>           <span style="color:#000">Output</span> <span style="color:#000">perf</span> <span style="color:#000">result </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">default</span> <span style="color:#000">false</span><span style="color:#000;font-weight:bold">)</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">help</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">h</span>       <span style="color:#000">Display</span> <span style="color:#000">help</span> <span style="color:#000">info</span>
+ <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">version</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span>    <span style="color:#000">Display</span> <span style="color:#000">version</span> <span style="color:#000">info</span>
+</code></pre></div><h3 id="32-插入数据">3.2 插入数据</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">insert</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">column</span> <span style="color:#000">test_column</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">file</span> 
+<span style="color:#000">data.txt</span>
+</code></pre></div><p>数据格式支持明文和二进制两种，key与向量之间用&quot;;&ldquo;分隔，多维向量采用空间分割，样例数据如下:</p>
+<pre tabindex="0"><code>0;-0.009256 -0.079674 -0.070349 0.007072 -0.064061 -0.010632 0.083429 -0.074821
+1;-0.061519 -0.001263 -0.016528 0.031539 0.041385 -0.017736 -0.005704 0.129443
+2;-0.039616 -0.063191 0.057591 -0.090278 -0.007452 -0.035939 -0.021892 -0.037860
+3;0.042097 0.050037 0.055060 0.150511 -0.052841 -0.005502 -0.018618 0.054607
+</code></pre><h3 id="33-查询数据">3.3 查询数据</h3>
+<p>query数据格式同上述的插入数据格式相同。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">search</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">column</span> <span style="color:#000">test_column</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">file</span> 
+<span style="color:#000">query.txt</span>
+</code></pre></div><h3 id="34-删除数据">3.4 删除数据</h3>
+<p>data数据格式同上述的插入数据格式相同。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">delete</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">column</span> <span style="color:#000">test_column</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">file</span> 
+<span style="color:#000">data.txt</span>
+</code></pre></div>
 
 
       </main>
