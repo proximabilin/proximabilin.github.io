@@ -82,19 +82,20 @@ fun createCollctionDemo(client *ProximaSearchClient) {
 		CollectionName:    "example",
 		MaxDocsPerSegment: 0, // 0 means unlimited, which is equal max value of system
 		ForwardColumns:    []string{"forward", "forward1"},
-		Columns: []sdk.ColumnIndex{{
-			Name:        "column",
-			IndexType:   0,                                     // 0 means default index, which is sdk.ProximaGraphIndex
-			DataType:    0,                                     // 0 means default, which is sdk.VectorFP32
-			Dimension:   8,                                     // Required field, no default value, 0 is not legal argument
-			ExtraParams: map[string]string{"ef_search": "200"}, // Advanced params
-		}, {
-			Name:        "column1",
-			IndexType:   sdk.ProximaGraphIndex,
-			DataType:    sdk.VectorFP16, // Index type is fp16, query could be fp32 for lack of language types
-			Dimension:   128,
-			ExtraParams: map[string]string{},
-		},
+		Columns: []sdk.ColumnIndex{
+			{
+				Name:        "column",
+				IndexType:   0,                                     // 0 means default index, which is sdk.ProximaGraphIndex
+				DataType:    0,                                     // 0 means default, which is sdk.VectorFP32
+				Dimension:   8,                                     // Required field, no default value, 0 is not legal argument
+				ExtraParams: map[string]string{"ef_search": "200"}, // Advanced params
+			}, {
+				Name:        "column1",
+				IndexType:   sdk.ProximaGraphIndex,
+				DataType:    sdk.VectorFP16, // Index type is fp16, query could be fp32 for lack of language types
+				Dimension:   128,
+				ExtraParams: map[string]string{},
+			},
 		},
 		Repository: nil, // No repository attached
 	}
