@@ -6,7 +6,7 @@ draft: false
 ---
 
 
-ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的RedHat系列Linux发行版本，包括RHEL、Centos、taobao7u等，CPU指令集方面支持x86(Intel)和aarch64(Arm)指令集。
+ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的 RedHat 系列 Linux 发行版本，包括 RHEL、Centos、taobao7u 等，支持 x86/x64 和 aarch64 等体系架构。
 
 
 
