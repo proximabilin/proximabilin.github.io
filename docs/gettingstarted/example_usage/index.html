@@ -21,10 +21,10 @@
 
 
   
-  <meta name="description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为&quot;Plants&quot;的集合，并尝试插入一批数据，然后查询比对的过程。
-1. Http 示 …">
+  <meta name="description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。
+1. …">
 <meta property="og:title" content="使用样例" />
-<meta property="og:description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为&quot;Plants&quot;的集合，并尝试插入一批数据，然后查询比对的过程。
+<meta property="og:description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。
 1. Http 示例 示例中我们选用 curl 工具来演示 http 协议的访问 ProximaBE 过程，用户也可以使用其它的 http 发送工具来替代。
 1.1. 创建Collection 下列示例脚本将创建一个名为 Plants 的集合，有一个名为 &ldquo;ImageVector&rdquo; 的向量索引列， 以及 &ldquo;Price&rdquo; 和 &ldquo;Description&rdquo; 两个正排列。
 其中索引列的具体承载数据类型为 8 维 float 类型的向量，索引类型为向量图索引。
@@ -38,7 +38,7 @@ $ curl -X GET http://127.0.0.1:16001/v1/collection/Plants Exec output:
 <meta property="og:site_name" content="Proxima" />
 
 <meta itemprop="name" content="使用样例">
-<meta itemprop="description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为&quot;Plants&quot;的集合，并尝试插入一批数据，然后查询比对的过程。
+<meta itemprop="description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。
 1. Http 示例 示例中我们选用 curl 工具来演示 http 协议的访问 ProximaBE 过程，用户也可以使用其它的 http 发送工具来替代。
 1.1. 创建Collection 下列示例脚本将创建一个名为 Plants 的集合，有一个名为 &ldquo;ImageVector&rdquo; 的向量索引列， 以及 &ldquo;Price&rdquo; 和 &ldquo;Description&rdquo; 两个正排列。
 其中索引列的具体承载数据类型为 8 维 float 类型的向量，索引类型为向量图索引。
@@ -47,10 +47,10 @@ $ curl -X POST http://127.0.0.1:16001/v1/collection/Plants \ -d &#39;{&#34;colle
 $ curl -X GET http://127.0.0.1:16001/v1/collection/Plants Exec output:
 {&quot;status&quot;:{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;},&quot;collection&quot;:{&quot;uuid&quot;:&quot;8e5b79bbdc198cc2dccdde0710f86f45&quot;,&quot;config&quot;: {&quot;collection_name&quot;:&quot;Plants&quot;,&quot;index_column_params&quot;: [{&quot;data_type&quot;:&quot;DT_VECTOR_FP32&quot;,&quot;dimension&quot;:8,&quot;index_type&quot;:&quot;IT_PROXIMA_GRAPH_INDEX&quot;,&quot;column_name&quot;:&quot;ImageVector&quot;,&quot; extra_params&quot;:[]}],&quot;forward_column_names&quot;: [&quot;Price&quot;,&quot;Description&quot;],&quot;max_docs_per_segment&quot;:&quot;18446744073709551615&quot;},&quot;status&quot;:&quot;CS_SERVING&quot;,&quot;magic_number&quot;:&quot;0&quot;} } 1.">
 
-<meta itemprop="wordCount" content="585">
+<meta itemprop="wordCount" content="587">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用样例"/>
-<meta name="twitter:description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为&quot;Plants&quot;的集合，并尝试插入一批数据，然后查询比对的过程。
+<meta name="twitter:description" content="在上文安装指南中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。
 1. Http 示例 示例中我们选用 curl 工具来演示 http 协议的访问 ProximaBE 过程，用户也可以使用其它的 http 发送工具来替代。
 1.1. 创建Collection 下列示例脚本将创建一个名为 Plants 的集合，有一个名为 &ldquo;ImageVector&rdquo; 的向量索引列， 以及 &ldquo;Price&rdquo; 和 &ldquo;Description&rdquo; 两个正排列。
 其中索引列的具体承载数据类型为 8 维 float 类型的向量，索引类型为向量图索引。
@@ -135,7 +135,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4299f512230d73ead030643fce515ed3.json"
+  data-offline-search-index-json-src="/offline-search-index.517d765d1103fcb3a7582103c6e5c703.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -162,7 +162,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4299f512230d73ead030643fce515ed3.json"
+  data-offline-search-index-json-src="/offline-search-index.517d765d1103fcb3a7582103c6e5c703.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -398,7 +398,7 @@ if (!doNotTrack) {
 		
 		
 	</header>    
-	<p>在上文<a href="/docs/gettingstarted/installation/">安装指南</a>中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为&quot;Plants&quot;的集合，并尝试插入一批数据，然后查询比对的过程。</p>
+	<p>在上文<a href="/docs/gettingstarted/installation/">安装指南</a>中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。</p>
 <h2 id="1-http-示例">1. Http 示例</h2>
 <p>示例中我们选用 curl 工具来演示 http 协议的访问 ProximaBE 过程，用户也可以使用其它的 http 发送工具来替代。</p>
 <h3 id="11-创建collection">1.1. 创建Collection</h3>

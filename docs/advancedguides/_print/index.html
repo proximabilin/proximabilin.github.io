@@ -112,7 +112,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4299f512230d73ead030643fce515ed3.json"
+  data-offline-search-index-json-src="/offline-search-index.517d765d1103fcb3a7582103c6e5c703.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -545,15 +545,15 @@ scale: 55
     
 	<h1 id="pg-aa3f4047907d92b8191f03942c7677c0">3 - 监控报警</h1>
     
-	<p>ProximaBE 基于<a href="https://github.com/apache/incubator-brpc">brpc</a>的<a href="https://github.com/apache/incubator-brpc/blob/master/docs/cn/bvar.md">bvar</a>功能，实现了兼容<a href="https://prometheus.io/">Prometheus</a>的监控功能。</p>
+	<p>ProximaBE 基于 <a href="https://github.com/apache/incubator-brpc">brpc</a> 的 <a href="https://github.com/apache/incubator-brpc/blob/master/docs/cn/bvar.md">bvar</a> 功能，实现了兼容 <a href="https://prometheus.io/">Prometheus</a> 的监控功能。</p>
 <p>基本流程如下</p>
 <ol>
 <li>ProximaBE 配置使用 bvar 做监控。</li>
 <li>配置 Prometheus，从 ProximaBE 订阅。</li>
-<li>配置<a href="https://grafana.com/">Grafana</a>，便于查询监控。</li>
+<li>配置 <a href="https://grafana.com/">Grafana</a>，便于查询监控。</li>
 </ol>
-<h2 id="1-配置bvar">1. 配置bvar</h2>
-<p>修改 proxima_be.conf，设置<code>common_config.metrics_config.name</code>为<code>bvar</code>。</p>
+<h2 id="1-配置-bvar">1. 配置 bvar</h2>
+<p>修改 proxima_be.conf，设置 <code>common_config.metrics_config.name</code> 为 <code>bvar</code>。</p>
 <pre tabindex="0"><code>common_config {
     # ...
     metrics_config {
@@ -561,7 +561,7 @@ scale: 55
 	}
     # ...
 }
-</code></pre><h2 id="2-配置prometheus">2. 配置Prometheus</h2>
+</code></pre><h2 id="2-配置-prometheus">2. 配置 Prometheus</h2>
 <p>在 prometheus.yml 中的 scrape_configs 中，加入如下配置</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">job_name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;proxima-be&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
@@ -580,9 +580,9 @@ scale: 55
 <li>启动并配置 Grafana
 <pre tabindex="0"><code>docker run -i -p 3000:3000 grafana/grafana
 </code></pre></li>
-<li>在浏览器中打开Grafana（地址如 http://localhost:3000/），并登录Grafana用户交互页面。</li>
-<li>添加Prometheus数据源，参考<a href="https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/">官方文档</a></li>
-<li>下载<a href="/data/grafana.json">Grafana配置文件</a>，参考<a href="https://grafana.com/docs/grafana/latest/dashboards/export-import/">官方文档</a>导入Grafana。</li>
+<li>在浏览器中打开 Grafana（地址如 http://localhost:3000/），并登录Grafana用户交互页面。</li>
+<li>添加 Prometheus 数据源，参考<a href="https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/">官方文档</a></li>
+<li>下载 <a href="/data/grafana.json">Grafana配置文件</a>，参考<a href="https://grafana.com/docs/grafana/latest/dashboards/export-import/">官方文档</a>导入 Grafana。</li>
 </ol>
 <p><img src="/images/metrics.jpeg" alt=""></p>
 
