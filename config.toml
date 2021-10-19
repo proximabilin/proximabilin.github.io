@@ -64,7 +64,7 @@ id = "UA-00000000-0"
 
 [languages.zh]
 title = "Proxima"
-description = "高性能向量检索引擎"
+description = "Proxima Bilin Engine"
 languageName ="中文"
 contentDir = "content/zh"
 
