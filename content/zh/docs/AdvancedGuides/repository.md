@@ -73,7 +73,7 @@ $ docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
 **拉取 MySQL Repository Docker 镜像**：
 
 ```s
-$ sudo docker pull ghcr.io/proxima/proxima-be
+$ sudo docker pull ghcr.io/alibaba/proxima-be
 ```
 
 
@@ -109,7 +109,7 @@ $ sudo docker run -d --name mysql-repository  \
       -v $HOME/proxima-be/conf:/var/lib/proxima-be/conf \
       -v $HOME/proxima-be/data:/var/lib/proxima-be/data \
       -v $HOME/proxima-be/log:/var/lib/proxima-be/log \
-      ghcr.io/proxima/proxima-be \
+      ghcr.io/alibaba/proxima-be \
       /var/lib/proxima-be/bin/mysql_repository --config /var/lib/proxima-be/conf/mysql_repo.conf
 ```
 
