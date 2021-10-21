@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><link rel="canonical" type="text/html" href="/docs/gettingstarted/">
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -18,23 +17,33 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>快速开始 | Proxima</title>
+<title>图片搜索 | Proxima</title>
 
 
-  <meta name="description" content="介绍如何快速开始使用 Proxima Bilin Engine，包括 Proxima Bilin Engine 的安装、使用样例等。
-">
-<meta property="og:title" content="快速开始" />
-<meta property="og:description" content="介绍如何快速开始使用 Proxima Bilin Engine，包括 Proxima Bilin Engine 的安装、使用样例等。
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="/docs/gettingstarted/" /><meta property="og:site_name" content="Proxima" />
+  
+  <meta name="description" content="以图搜图是互联网应用中的常见功能，各大搜索引擎都提供了通过图片搜索相似图片的功能，另外“拍立淘”也是基于图片搜索实现的。本文介绍如何基于 Proxima Bilin Engine 来实现图片搜索功能，主要包括三个步骤：图片特征抽取、图片底库入库、在线检索。
+图片特征抽取
+为了实现图片搜索，需要从图片 …">
+<meta property="og:title" content="图片搜索" />
+<meta property="og:description" content="以图搜图是互联网应用中的常见功能，各大搜索引擎都提供了通过图片搜索相似图片的功能，另外“拍立淘”也是基于图片搜索实现的。本文介绍如何基于 Proxima Bilin Engine 来实现图片搜索功能，主要包括三个步骤：图片特征抽取、图片底库入库、在线检索。
+图片特征抽取 为了实现图片搜索，需要从图片中抽取特征向量，用于建立向量索引并做 KNN 检索。一般是通过深度学习模型中的最后一层全连接层作为描述图片的特征。在这里，我们选用预训练好的 ResNet18 模型来抽取图片特征，其输入要求至少为 224*224 的 RGB 图片且已经做过标准化，输出特征为 512 维的float。
+class FeatureExtractor(object): def __init__(self): self.model = models.resnet18(pretrained=True) self.model.eval() self.layer = self.model._modules.get(&#34;avgpool&#34;) self.transform_pipeline = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]) def get_feature(self, img): t_img = Variable(self.transform_pipeline(img)).unsqueeze(0) feat_vec = torch.zeros(512) def copy_data(m, i, o): feat_vec.copy_(o.data.squeeze()) h = self.layer.register_forward_hook(copy_data) self.model(t_img) h.remove() return feat_vec.tolist() fe = FeatureExtractor() 为了满足 ResNet18 的要求，我们定义了 transform_pipeline 来做图片 resize 和标准化。然后获取 avgpool 层，在 get_feature 中通过注册钩子来将特征数据拷贝到 feat_vec 中。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/gettingstarted/usecases/image_search/" /><meta property="article:section" content="docs" />
 
-<meta itemprop="name" content="快速开始">
-<meta itemprop="description" content="介绍如何快速开始使用 Proxima Bilin Engine，包括 Proxima Bilin Engine 的安装、使用样例等。
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="快速开始"/>
-<meta name="twitter:description" content="介绍如何快速开始使用 Proxima Bilin Engine，包括 Proxima Bilin Engine 的安装、使用样例等。
-"/>
+<meta property="og:site_name" content="Proxima" />
+
+<meta itemprop="name" content="图片搜索">
+<meta itemprop="description" content="以图搜图是互联网应用中的常见功能，各大搜索引擎都提供了通过图片搜索相似图片的功能，另外“拍立淘”也是基于图片搜索实现的。本文介绍如何基于 Proxima Bilin Engine 来实现图片搜索功能，主要包括三个步骤：图片特征抽取、图片底库入库、在线检索。
+图片特征抽取 为了实现图片搜索，需要从图片中抽取特征向量，用于建立向量索引并做 KNN 检索。一般是通过深度学习模型中的最后一层全连接层作为描述图片的特征。在这里，我们选用预训练好的 ResNet18 模型来抽取图片特征，其输入要求至少为 224*224 的 RGB 图片且已经做过标准化，输出特征为 512 维的float。
+class FeatureExtractor(object): def __init__(self): self.model = models.resnet18(pretrained=True) self.model.eval() self.layer = self.model._modules.get(&#34;avgpool&#34;) self.transform_pipeline = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]) def get_feature(self, img): t_img = Variable(self.transform_pipeline(img)).unsqueeze(0) feat_vec = torch.zeros(512) def copy_data(m, i, o): feat_vec.copy_(o.data.squeeze()) h = self.layer.register_forward_hook(copy_data) self.model(t_img) h.remove() return feat_vec.tolist() fe = FeatureExtractor() 为了满足 ResNet18 的要求，我们定义了 transform_pipeline 来做图片 resize 和标准化。然后获取 avgpool 层，在 get_feature 中通过注册钩子来将特征数据拷贝到 feat_vec 中。">
+
+<meta itemprop="wordCount" content="344">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="图片搜索"/>
+<meta name="twitter:description" content="以图搜图是互联网应用中的常见功能，各大搜索引擎都提供了通过图片搜索相似图片的功能，另外“拍立淘”也是基于图片搜索实现的。本文介绍如何基于 Proxima Bilin Engine 来实现图片搜索功能，主要包括三个步骤：图片特征抽取、图片底库入库、在线检索。
+图片特征抽取 为了实现图片搜索，需要从图片中抽取特征向量，用于建立向量索引并做 KNN 检索。一般是通过深度学习模型中的最后一层全连接层作为描述图片的特征。在这里，我们选用预训练好的 ResNet18 模型来抽取图片特征，其输入要求至少为 224*224 的 RGB 图片且已经做过标准化，输出特征为 512 维的float。
+class FeatureExtractor(object): def __init__(self): self.model = models.resnet18(pretrained=True) self.model.eval() self.layer = self.model._modules.get(&#34;avgpool&#34;) self.transform_pipeline = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]) def get_feature(self, img): t_img = Variable(self.transform_pipeline(img)).unsqueeze(0) feat_vec = torch.zeros(512) def copy_data(m, i, o): feat_vec.copy_(o.data.squeeze()) h = self.layer.register_forward_hook(copy_data) self.model(t_img) h.remove() return feat_vec.tolist() fe = FeatureExtractor() 为了满足 ResNet18 的要求，我们定义了 transform_pipeline 来做图片 resize 和标准化。然后获取 avgpool 层，在 get_feature 中通过注册钩子来将特征数据拷贝到 feat_vec 中。"/>
 
 
 
@@ -74,7 +83,7 @@ if (!doNotTrack) {
 
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -124,418 +133,255 @@ if (!doNotTrack) {
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-          </div>
-          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
-          </div>
-          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; 站内搜索…"
+  aria-label="站内搜索…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.e14d592e75b678797d97c8a5c3699cae.json"
+  data-offline-search-base-href="/"
+  data-offline-search-max-results="10"
+>
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
+  <a href="/docs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">文档</span></a>
+  <ul class="ul-1">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsintroductionintroduction-li">
+  <a href="/docs/introduction/introduction/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsintroductionintroduction"><span class="">简介</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsgettingstarted-li">
+  <a href="/docs/gettingstarted/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsgettingstarted"><span class="">快速开始</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgettingstartedinstallation-li">
+  <a href="/docs/gettingstarted/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedinstallation"><span class="">安装指南</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgettingstartedexample_usage-li">
+  <a href="/docs/gettingstarted/example_usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedexample_usage"><span class="">使用样例</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsgettingstartedusecases-li">
+  <a href="/docs/gettingstarted/usecases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsgettingstartedusecases"><span class="">用户案例</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsgettingstartedusecasesimage_search-li">
+  <a href="/docs/gettingstarted/usecases/image_search/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedusecasesimage_search"><span class="td-sidebar-nav-active-item">图片搜索</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvancedguides-li">
+  <a href="/docs/advancedguides/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsadvancedguides"><span class="">进阶指南</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidesserver_config-li">
+  <a href="/docs/advancedguides/server_config/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidesserver_config"><span class="">服务配置</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidesmeta_management-li">
+  <a href="/docs/advancedguides/meta_management/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidesmeta_management"><span class="">元数据</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidesmonitor-li">
+  <a href="/docs/advancedguides/monitor/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidesmonitor"><span class="">监控报警</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidesrepository-li">
+  <a href="/docs/advancedguides/repository/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidesrepository"><span class="">Repository</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidesperformance-li">
+  <a href="/docs/advancedguides/performance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidesperformance"><span class="">性能调优</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsadvancedguidestools-li">
+  <a href="/docs/advancedguides/tools/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsadvancedguidestools"><span class="">常用工具</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsapireference-li">
+  <a href="/docs/apireference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsapireference"><span class="">API 手册</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsapireferencehttp-li">
+  <a href="/docs/apireference/http/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsapireferencehttp"><span class="">REST APIs</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docssdkreference-li">
+  <a href="/docs/sdkreference/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docssdkreference"><span class="">SDK 手册</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssdkreferencepython-li">
+  <a href="/docs/sdkreference/python/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencepython"><span class="">Python SDK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssdkreferencecpp-li">
+  <a href="/docs/sdkreference/cpp/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencecpp"><span class="">C&#43;&#43; SDK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssdkreferencejava-li">
+  <a href="/docs/sdkreference/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencejava"><span class="">Java SDK</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssdkreferencego-li">
+  <a href="/docs/sdkreference/go/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencego"><span class="">Golang SDK</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfaq-li">
+  <a href="/docs/faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsfaq"><span class="">常见问题</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfaqcommon_faq-li">
+  <a href="/docs/faq/common_faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsfaqcommon_faq"><span class="">常见错误</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfaqperformance_faq-li">
+  <a href="/docs/faq/performance_faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsfaqperformance_faq"><span class="">性能优化</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfaqdeployment_faq-li">
+  <a href="/docs/faq/deployment_faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsfaqdeployment_faq"><span class="">部署问题</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsfaqsample-li">
+  <a href="/docs/faq/sample/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsfaqsample"><span class=""></span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsrelease-li">
+  <a href="/docs/release/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsrelease"><span class="">发行版本</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsreleaserelease-li">
+  <a href="/docs/release/release/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsreleaserelease"><span class="">v0.1.0</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsbenchmark-li">
+  <a href="/docs/benchmark/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsbenchmark"><span class="">性能测试</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsbenchmarkbenchmark-li">
+  <a href="/docs/benchmark/benchmark/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsbenchmarkbenchmark"><span class="">v0.1.2</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
+</li>
+    </ul>
+  </nav>
+</div>
+
+          </aside>
+          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
 
 
 
 
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+
+
+
+
+
+
+
+
+
+<a id="print" href="/docs/gettingstarted/usecases/_print/"><i class="fa fa-print fa-fw"></i> 整节打印</a>
+
+
+
+</div>
+
+
+
+            
+
+
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#图片特征抽取">图片特征抽取</a></li>
+    <li><a href="#图片底库入库">图片底库入库</a></li>
+    <li><a href="#图片检索">图片检索</a></li>
+  </ul>
+</nav></div>
+
+
+
+            
+
+	
+		
+
+
+
+  
+  
+
+	
+		
+
+
+
+  
+  
+
+	
+
+          </aside>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/docs/">文档</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/docs/gettingstarted/">快速开始</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="/docs/gettingstarted/usecases/">用户案例</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="/docs/gettingstarted/usecases/image_search/">图片搜索</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
 <div class="td-content">
-<div class="pageinfo pageinfo-primary d-print-none">
-<p>
-这是本节的多页打印视图。
-<a href="#" onclick="print();return false;">点击此处打印</a>.
-</p><p>
-<a href="/docs/gettingstarted/">返回本页常规视图</a>.
-</p>
-</div>
-
-
-
-<h1 class="title">快速开始</h1>
-<div class="lead">介绍如何快速开始使用 Proxima Bilin Engine，包括 Proxima Bilin Engine 的安装、使用样例等。</div>
-
-
-
-
-    <ul>
-    
-  
-  
-  
-  
-
-  
-    
-    
+	<h1>图片搜索</h1>
 	
-<li>1: <a href="#pg-e02fadd93222eb9371549dd13ce18df0">安装指南</a></li>
+	<header class="article-meta">
+		
+		
+			
+				
 
 
-    
-  
-    
-    
-	
-<li>2: <a href="#pg-50bcf857fd4a198ad0fd0837c5560880">使用样例</a></li>
+			
+				
 
 
-    
-  
-    
-    
-	
-<li>3: <a href="#pg-7a474729c29cfd9a504f44446faec00a">用户案例</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>3.1: <a href="#pg-7e4f75b83524dbd54f36e4b28ba3a561">图片搜索</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-
-    </ul>
-
-
-<div class="content">
-      
-</div>
-</div>
-
-
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-e02fadd93222eb9371549dd13ce18df0">1 - 安装指南</h1>
-    
-	<p>ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的 RedHat 系列 Linux 发行版本，包括 RHEL、Centos、taobao7u 等，支持 x86/x64 和 aarch64 等体系架构。</p>
-<h2 id="1-docker-镜像安装">1. Docker 镜像安装</h2>
-<h3 id="11-安装前提">1.1. 安装前提</h3>
-<p>我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">info</span>
-</code></pre></div><h3 id="12-拉取docker镜像">1.2. 拉取Docker镜像</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
-</code></pre></div><h3 id="13-启动容器">1.3. 启动容器</h3>
-<h5 id="131-快速启动容器">1.3.1. 快速启动容器</h5>
-<p>使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">run</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">name</span> <span style="color:#000">proxima_be</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
-</code></pre></div><blockquote>
-<p><strong><em>NOTE:</em></strong>  低版本 docker 需要在上述命令中增加<code>--net=host</code>选项</p>
-</blockquote>
-<h5 id="132-映射文件启动容器">1.3.2. 映射文件启动容器</h5>
-<p>通过将本机目录映射到容器，在容器删除时数据文件仍然可用。</p>
-<ul>
-<li>创建相关目录，修改配置文件</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">mkdir</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">conf</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">data</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">vim</span> <span style="color:#ce5c00;font-weight:bold">/$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima_be.conf</span> <span style="color:#8f5902;font-style:italic"># 镜像中有默认配置 /var/lib/proxima-be/conf/proxima_be.conf</span>
-</code></pre></div><ul>
-<li>执行下面的命令启动容器</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">run</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">name</span> <span style="color:#000">proxima_be</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#000">\</span>
-      <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span> <span style="color:#000">\</span>
-      <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span> <span style="color:#000">\</span>
-      <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
-</code></pre></div><h5 id="133-其他容器操作">1.3.3. 其他容器操作</h5>
-<p>停止服务</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">stop</span> <span style="color:#000">proxima_be</span>
-</code></pre></div><blockquote>
-<p><strong><em>WARNING:</em></strong>  kill 容器或者强制删除容器有可能导致数据丢失，慎用下面的命令。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">kill</span> <span style="color:#000">proxima_be</span>
-<span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">rm</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">f</span> <span style="color:#000">proxima_be</span>
-</code></pre></div></blockquote>
-
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-50bcf857fd4a198ad0fd0837c5560880">2 - 使用样例</h1>
-    
-	<p>在上文<a href="/docs/gettingstarted/installation/">安装指南</a>中，我们详细介绍了 ProximaBE 的安装和启动方法， 接下来我们将使用一个样例来介绍 ProximaBE 的服务使用方法。 在样例程序中，我们将使用两种示例代码演示创建一个名为 &ldquo;Plants&rdquo; 的集合，并尝试插入一批数据，然后查询比对的过程。</p>
-<h2 id="1-http-示例">1. Http 示例</h2>
-<p>示例中我们选用 curl 工具来演示 http 协议的访问 ProximaBE 过程，用户也可以使用其它的 http 发送工具来替代。</p>
-<h3 id="11-创建collection">1.1. 创建Collection</h3>
-<p>下列示例脚本将创建一个名为 Plants 的集合，有一个名为 &ldquo;ImageVector&rdquo; 的向量索引列， 以及 &ldquo;Price&rdquo; 和 &ldquo;Description&rdquo; 两个正排列。</p>
-<p>其中索引列的具体承载数据类型为 8 维 float 类型的向量，索引类型为向量图索引。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">POST</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span> <span style="color:#000">\</span>
-       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;Plants&#34;,
-</span><span style="color:#4e9a06">          	&#34;forward_column_names&#34;:[&#34;Price&#34;, &#34;Description&#34;],
-</span><span style="color:#4e9a06">          	&#34;index_column_params&#34;:[{
-</span><span style="color:#4e9a06">            	&#34;column_name&#34;:&#34;ImageVector&#34;,
-</span><span style="color:#4e9a06">            	&#34;index_type&#34;:&#34;IT_PROXIMA_GRAPH_INDEX&#34;,
-</span><span style="color:#4e9a06">            	&#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;,
-</span><span style="color:#4e9a06">            	&#34;dimension&#34;: 8}]
-</span><span style="color:#4e9a06">           }&#39;</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;}
-</code></pre><h3 id="12-查看collection">1.2 查看Collection</h3>
-<p>创建成功的集合，我们可以直接使用访问查看。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">GET</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;status&quot;:{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;},&quot;collection&quot;:{&quot;uuid&quot;:&quot;8e5b79bbdc198cc2dccdde0710f86f45&quot;,&quot;config&quot;:
-{&quot;collection_name&quot;:&quot;Plants&quot;,&quot;index_column_params&quot;:
-[{&quot;data_type&quot;:&quot;DT_VECTOR_FP32&quot;,&quot;dimension&quot;:8,&quot;index_type&quot;:&quot;IT_PROXIMA_GRAPH_INDEX&quot;,&quot;column_name&quot;:&quot;ImageVector&quot;,&quot;
-extra_params&quot;:[]}],&quot;forward_column_names&quot;:
-[&quot;Price&quot;,&quot;Description&quot;],&quot;max_docs_per_segment&quot;:&quot;18446744073709551615&quot;},&quot;status&quot;:&quot;CS_SERVING&quot;,&quot;magic_number&quot;:&quot;0&quot;}
-}
-</code></pre><h3 id="13-写入文档">1.3. 写入文档</h3>
-<p>下面示例中向 Plants 集合插入了 2 条数据(受限于展示，用户可以自由扩展 rows 字段)，注意rows中的字段值顺序应与 row_meta 中的描述保持一致。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">POST</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">index</span> <span style="color:#000">\</span>
-       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;Plants&#34;,
-</span><span style="color:#4e9a06">            &#34;row_meta&#34;: {
-</span><span style="color:#4e9a06">              &#34;forward_column_names&#34;:[&#34;Price&#34;, &#34;Description&#34;],
-</span><span style="color:#4e9a06">              &#34;index_column_metas&#34;: [{
-</span><span style="color:#4e9a06">                &#34;column_name&#34;:&#34;ImageVector&#34;,
-</span><span style="color:#4e9a06">                &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;,
-</span><span style="color:#4e9a06">                &#34;dimension&#34;:8}]
-</span><span style="color:#4e9a06">            },
-</span><span style="color:#4e9a06">            &#34;rows&#34;:[
-</span><span style="color:#4e9a06">              {
-</span><span style="color:#4e9a06">                &#34;primary_key&#34;:0,
-</span><span style="color:#4e9a06">                &#34;operation_type&#34;:&#34;OP_INSERT&#34;,
-</span><span style="color:#4e9a06">                &#34;forward_column_values&#34;:{
-</span><span style="color:#4e9a06">                  &#34;values&#34;:[{&#34;float_value&#34;:0.1}, {&#34;string_value&#34;:&#34;ginkgo tree with number 0&#34;}]},
-</span><span style="color:#4e9a06">                &#34;index_column_values&#34;:{
-</span><span style="color:#4e9a06">                  &#34;values&#34;:[{&#34;string_value&#34;:&#34;[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]&#34;}]}
-</span><span style="color:#4e9a06">              },
-</span><span style="color:#4e9a06">              {
-</span><span style="color:#4e9a06">                &#34;primary_key&#34;:1,
-</span><span style="color:#4e9a06">                &#34;operation_type&#34;:&#34;OP_INSERT&#34;,
-</span><span style="color:#4e9a06">                &#34;forward_column_values&#34;:{
-</span><span style="color:#4e9a06">                  &#34;values&#34;:[{&#34;float_value&#34;:1.1}, {&#34;string_value&#34;:&#34;ginkgo tree with number 1&#34;}]},
-</span><span style="color:#4e9a06">                &#34;index_column_values&#34;:{
-</span><span style="color:#4e9a06">                  &#34;values&#34;:[{&#34;string_value&#34;:&#34;[1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8]&#34;}]}
-</span><span style="color:#4e9a06">              }
-</span><span style="color:#4e9a06">            ]
-</span><span style="color:#4e9a06">          }&#39;</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;}
-</code></pre><h3 id="14-查询文档">1.4. 查询文档</h3>
-<p>下面示例代码中展示了我们Knn 查找top1图像的过程，结果应该准确命中第一条文档，用户可以自由设置topk。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">POST</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">query</span> <span style="color:#000">\</span>
-       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;Plants&#34;,
-</span><span style="color:#4e9a06">            &#34;query_type&#34;:&#34;QT_KNN&#34;,
-</span><span style="color:#4e9a06">            &#34;knn_param&#34;: {
-</span><span style="color:#4e9a06">              &#34;column_name&#34;:&#34;ImageVector&#34;,
-</span><span style="color:#4e9a06">              &#34;topk&#34;:1,
-</span><span style="color:#4e9a06">              &#34;matrix&#34;: &#34;[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]&#34;,
-</span><span style="color:#4e9a06">              &#34;batch_count&#34;:1,
-</span><span style="color:#4e9a06">              &#34;dimension&#34;:8,
-</span><span style="color:#4e9a06">              &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;}
-</span><span style="color:#4e9a06">           }&#39;</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;status&quot;:{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;},&quot;results&quot;:[{&quot;documents&quot;:
-[{&quot;score&quot;:0,&quot;primary_key&quot;:&quot;0&quot;,&quot;forward_column_values&quot;:[{&quot;key&quot;:&quot;Price&quot;,&quot;value&quot;:{&quot;float_value&quot;:0.1}},
-{&quot;key&quot;:&quot;Description&quot;,&quot;value&quot;:{&quot;string_value&quot;:&quot;ginkgo tree with number
-0&quot;}}]}]}],&quot;debug_info&quot;:&quot;&quot;,&quot;latency_us&quot;:&quot;636&quot;}
-</code></pre><h3 id="15-collection统计">1.5 Collection统计</h3>
-<p>经过一段时间累积，我们希望能够获取某个集合的详细信息，则可以通过下列示例访问:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">GET</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">stats</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;status&quot;:{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;},&quot;collection_stats&quot;:{&quot;segment_stats&quot;:
-[{&quot;state&quot;:&quot;SS_WRITING&quot;,&quot;max_lsn&quot;:&quot;0&quot;,&quot;min_lsn&quot;:&quot;0&quot;,&quot;doc_count&quot;:&quot;2&quot;,&quot;max_doc_id&quot;:&quot;1&quot;,&quot;min_doc_id&quot;:&quot;0&quot;,&quot;segment_id
-&quot;:0,&quot;segment_path&quot;:&quot;&quot;,&quot;max_timestamp&quot;:&quot;0&quot;,&quot;min_timestamp&quot;:&quot;0&quot;,&quot;index_file_size&quot;:&quot;2142208&quot;,&quot;max_primary_key&quot;:&quot;1&quot;,
-&quot;min_primary_key&quot;:&quot;0&quot;,&quot;index_file_count&quot;:&quot;2&quot;}],&quot;collection_name&quot;:&quot;Plants&quot;,&quot;collection_path&quot;:&quot;/home/x x x/c
-ode/proxima-
-se/build/test_dir/Plants&quot;,&quot;total_doc_count&quot;:&quot;2&quot;,&quot;total_segment_count&quot;:&quot;1&quot;,&quot;total_index_file_size&quot;:&quot;22241280&quot;,&quot;to
-tal_index_file_count&quot;:&quot;6&quot;}}
-</code></pre><h3 id="16-删除collection">1.6 删除Collection</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">curl</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">X</span> <span style="color:#000">DELETE</span> <span style="color:#000">http</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">v1</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">collection</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Plants</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>{&quot;code&quot;:0,&quot;reason&quot;:&quot;Success&quot;}
-</code></pre><h2 id="2-python-示例">2. Python 示例</h2>
-<h3 id="21-python-sdk-安装">2.1. Python SDK 安装</h3>
-<p>在安装python sdk之前请确保系统中已安装python3.6以及pip程序。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">pip</span> <span style="color:#000">install</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">i</span> <span style="color:#000">https</span><span style="color:#ce5c00;font-weight:bold">://</span><span style="color:#000">pypi.antfin</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">inc.com</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">simple</span><span style="color:#ce5c00;font-weight:bold">/</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">U</span> <span style="color:#000">pyproximabe</span><span style="color:#ce5c00;font-weight:bold">==</span><span style="color:#0000cf;font-weight:bold">0.1.2</span>
-</code></pre></div><h3 id="22-连接client">2.2. 连接Client</h3>
-<p>在具体操作之前，我们需要创建client连接ProximaBE，当前支持http和grpc协议。Client默认为同步请求，同时我们也支持AsyncClient做异步请求。参考代码如下:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#204a87;font-weight:bold">from</span> <span style="color:#000">pyproximabe</span> <span style="color:#204a87;font-weight:bold">import</span> <span style="color:#ce5c00;font-weight:bold">*</span>
-
-<span style="color:#8f5902;font-style:italic"># Init client</span>
-<span style="color:#000">client</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">Client</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;127.0.0.1&#39;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><h3 id="23-创建collection">2.3. 创建Collection</h3>
-<p>在下列代码中，我们创建了一个名为Plants的集合。其中一个索引列名为&quot;ImageVector&quot;，顾名思义主要是存放图片向量，以及&quot;Price&quot;和&quot;Description&quot;两个正排列。</p>
-<p>创建Collection的参数主要是需要描述索引列的结构，比如索引类型、数据类型、维度等信息。 正排列则仅描述列名即可。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Init index column</span>
-<span style="color:#000">index_column</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">IndexColumnParam</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;ImageVector&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                                <span style="color:#000">dimension</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">,</span>
-                                <span style="color:#000">data_type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">DataType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">VECTOR_FP32</span><span style="color:#000;font-weight:bold">,</span>
-                                <span style="color:#000">index_type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">IndexType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">PROXIMA_GRAPH_INDEX</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#8f5902;font-style:italic"># Init collection config</span>
-<span style="color:#000">collection_config</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">CollectionConfig</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                                     <span style="color:#000">index_column_params</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">index_column</span><span style="color:#000;font-weight:bold">],</span>
-                                     <span style="color:#000">max_docs_per_segment</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span>
-                                     <span style="color:#000">forward_column_names</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;Price&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;Description&#39;</span><span style="color:#000;font-weight:bold">])</span>
-<span style="color:#8f5902;font-style:italic"># Create collection</span>
-<span style="color:#000">status</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">create_collection</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">collection_config</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#8f5902;font-style:italic"># Check Return</span>
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>success
-</code></pre><h3 id="23-查看collection">2.3 查看Collection</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Get collection info</span>
-<span style="color:#000">status</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">describe_collection</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>(&lt;pyproximabe.core.types.ProximaBeStatus object at 0x7f63b0a41ac8&gt;, CollectionInfo{'collection_config':
-CollectionConfig{'collection_name': 'Plants', 'index_column_params': [IndexColumnParam{'name': 'ImageVector',
-'dimension': 8, 'index_type': &lt;IndexType.PROXIMA_GRAPH_INDEX: 1&gt;, 'data_type': &lt;DataType.VECTOR_FP32: 23&gt;,
-'extra_params': {}}], 'max_docs_per_segment': 18446744073709551615, 'forward_column_names': ['Price',
-'Description'], 'repository_config': None}, 'status': &lt;Status.SERVING: 1&gt;, 'uuid':
-'dbd57611e812164b7e7b697ea0af684c', 'latest_lsn_context': LsnContext{'lsn': 0, 'context': ''}, 'magic_number':
-0})
-</code></pre><h3 id="24-写入文档">2.4. 写入文档</h3>
-<p>名为&quot;plants&quot;的Collection创建完成之后，我们向其中写入100条文档。</p>
-<p>发送数据前，我们需要描述发送的数据格式RowMeta，主要供后端校验使用。至于写入模式分两种，可以支持批量，也可以支持单条发送，而写入请求类型支持OperationType.INSERT，OperationType.DELETE，OperationType.UPDATE 三种。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Set record data format</span>
-<span style="color:#000">index_column_meta</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">WriteRequest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">IndexColumnMeta</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;ImageVector&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                                                 <span style="color:#000">data_type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">DataType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">VECTOR_FP32</span><span style="color:#000;font-weight:bold">,</span>
-                                                 <span style="color:#000">dimension</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000">row_meta</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">WriteRequest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">RowMeta</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">index_column_metas</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">index_column_meta</span><span style="color:#000;font-weight:bold">],</span>
-                                <span style="color:#000">forward_column_names</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#39;Price&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;Description&#39;</span><span style="color:#000;font-weight:bold">],</span>
-                                <span style="color:#000">forward_column_types</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">DataType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">FLOAT</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">DataType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">STRING</span><span style="color:#000;font-weight:bold">])</span>
-<span style="color:#8f5902;font-style:italic"># Send 100 records</span>
-<span style="color:#000">rows</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[]</span>
-<span style="color:#204a87;font-weight:bold">for</span> <span style="color:#000">i</span> <span style="color:#204a87;font-weight:bold">in</span> <span style="color:#204a87">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">):</span>
-  <span style="color:#000">vector</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.6</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#0000cf;font-weight:bold">0.8</span><span style="color:#000;font-weight:bold">]</span>
-  <span style="color:#000">price</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">i</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#0000cf;font-weight:bold">0.1</span>
-  <span style="color:#000">description</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#34;ginkgo tree with number &#34;</span> <span style="color:#ce5c00;font-weight:bold">+</span> <span style="color:#204a87">str</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">)</span>
-  <span style="color:#000">row</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">WriteRequest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">Row</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">primary_key</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">i</span><span style="color:#000;font-weight:bold">,</span>
-                         <span style="color:#000">operation_type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">WriteRequest</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">OperationType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">INSERT</span><span style="color:#000;font-weight:bold">,</span>
-                         <span style="color:#000">index_column_values</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">vector</span><span style="color:#000;font-weight:bold">],</span>
-                         <span style="color:#000">forward_column_values</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">price</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">description</span><span style="color:#000;font-weight:bold">])</span>
-  <span style="color:#000">rows</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">append</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">row</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#000">write_request</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">WriteRequest</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">collection_name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                             <span style="color:#000">rows</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">rows</span><span style="color:#000;font-weight:bold">,</span>
-                             <span style="color:#000">row_meta</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">row_meta</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000">status</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">write_request</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec Output:</p>
-<pre tabindex="0"><code>success
-</code></pre><h3 id="25-查询文档">2.5. 查询文档</h3>
-<p>插入完100条文档到Plants之后，我们挑选5条查询看看，是否能够准确返回对应的图片。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Query</span>
-<span style="color:#000">query_vector</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">0.1</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.2</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.3</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.4</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.5</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.6</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.7</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#0000cf;font-weight:bold">0.8</span><span style="color:#000;font-weight:bold">]</span>
-<span style="color:#000">status</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">knn_res</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">query</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">collection_name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                               <span style="color:#000">column_name</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;ImageVector&#39;</span><span style="color:#000;font-weight:bold">,</span>
-                               <span style="color:#000">features</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">query_vector</span><span style="color:#000;font-weight:bold">,</span>
-                               <span style="color:#000">data_type</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">DataType</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">VECTOR_FP32</span><span style="color:#000;font-weight:bold">,</span>
-                               <span style="color:#000">topk</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">knn_res</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec ouput:</p>
-<pre tabindex="0"><code>success
-
-QueryResponse{'results': [[Document{'primary_key': 0, 'score': 0.0, 'forward_column_values': {'Price':
-0.10000000149011612, 'Description': 'ginkgo tree with number 0'}}, Document{'primary_key': 1, 'score': 8.0,
-'forward_column_values': {'Price': 1.100000023841858, 'Description': 'ginkgo tree with number 1'}},
-Document{'primary_key': 2, 'score': 32.0, 'forward_column_values': {'Price': 2.0999999046325684, 'Description':
-'ginkgo tree with number 2'}}, Document{'primary_key': 3, 'score': 72.0, 'forward_column_values': {'Price':
-3.0999999046325684, 'Description': 'ginkgo tree with number 3'}}, Document{'primary_key': 4, 'score': 128.0,
-'forward_column_values': {'Price': 4.099999904632568, 'Description': 'ginkgo tree with number 4'}}]],
-'debug_info': '', 'latency_us': 269}
-</code></pre><h3 id="26-collection统计">2.6. Collection统计</h3>
-<p>我们也可以通过统计接口查看Collection的内部数据和状态。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Get collection statistics</span>
-<span style="color:#000">status</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#000">collection_stats</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">stats_collection</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">collection_stats</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec ouput:</p>
-<pre tabindex="0"><code>success
-CollectionStats{'collection_name': 'Plants', 'collection_path': '/home/xxx/code/proxima-
-be/build/test_dir/Plants', 'total_doc_count': 100, 'total_segment_count': 1, 'total_index_file_count': 6,
-'total_index_file_size': 22241280, 'segment_stats': [SegmentStats{'segment_id': 0, 'state':
-&lt;SegmentState.WRITING: 1&gt;, 'doc_count': 100, 'index_file_count': 2, 'index_file_size': 2142208, 'min_doc_id': 0,
-'max_doc_id': 99, 'min_primary_key': 0, 'max_primary_key': 99, 'min_timestamp': 0, 'max_timestamp': 0, 'min_lsn': 0, 'max_lsn': 0, 'segment_path': ''}]}
-</code></pre><h3 id="27-删除collection">2.7. 删除Collection</h3>
-<p>实验完关于&quot;plants&quot;的一切之后，我们希望能够删除Collection。</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#8f5902;font-style:italic"># Drop collection</span>
-<span style="color:#000">status</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">client</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#000">drop_collection</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;Plants&#39;</span><span style="color:#000;font-weight:bold">)</span>
-
-<span style="color:#204a87">print</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">status</span><span style="color:#000;font-weight:bold">)</span>
-</code></pre></div><p>Exec output:</p>
-<pre tabindex="0"><code>success
-</code></pre>
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-7a474729c29cfd9a504f44446faec00a">3 - 用户案例</h1>
-    <div class="lead">介绍 Proxima Bilin Engine 使用案例。</div>
-	
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-7e4f75b83524dbd54f36e4b28ba3a561">3.1 - 图片搜索</h1>
-    
+			
+		
+		
+	</header>    
 	<p>以图搜图是互联网应用中的常见功能，各大搜索引擎都提供了通过图片搜索相似图片的功能，另外“拍立淘”也是基于图片搜索实现的。本文介绍如何基于 Proxima Bilin Engine 来实现图片搜索功能，主要包括三个步骤：图片特征抽取、图片底库入库、在线检索。</p>
 <h2 id="图片特征抽取">图片特征抽取</h2>
 <p>为了实现图片搜索，需要从图片中抽取特征向量，用于建立向量索引并做 KNN 检索。一般是通过深度学习模型中的最后一层全连接层作为描述图片的特征。在这里，我们选用预训练好的 ResNet18 模型来抽取图片特征，其输入要求至少为 224*224 的 RGB 图片且已经做过标准化，输出特征为 512 维的float。</p>
@@ -664,18 +510,13 @@ be/build/test_dir/Plants', 'total_doc_count': 100, 'total_segment_count': 1, 'to
 <img src="/images/image_search_result.jpg" alt=""></p>
 <p>需要说明的是，Proxima Bilin Engine 支持边插入边检索，不需要全部入库完即可提供检索服务。</p>
 
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">
+
 </div>
 
-
-
-    
-	
-  
-
-    
-	
-  
-
+</div>
 
 
           </main>
