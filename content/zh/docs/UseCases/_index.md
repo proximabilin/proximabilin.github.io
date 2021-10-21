@@ -1,7 +1,7 @@
 ---
-title: "用户案例"
-linkTitle: "用户案例"
-weight: 150
+title: "案例教程"
+linkTitle: "案例教程"
+weight: 170
 description: >
   介绍 Proxima Bilin Engine 使用案例。
 ---
