@@ -50,8 +50,6 @@
   </url><url>
     <loc>/docs/faq/</loc>
   </url><url>
-    <loc>/docs/release/release/</loc>
-  </url><url>
     <loc>/docs/release/</loc>
   </url><url>
     <loc>/docs/benchmark/benchmark/</loc>
@@ -61,6 +59,8 @@
     <loc>/docs/</loc>
   </url><url>
     <loc>/docs/faq/sample/</loc>
+  </url><url>
+    <loc>/docs/release/release/</loc>
   </url><url>
     <loc>/</loc>
   </url><url>

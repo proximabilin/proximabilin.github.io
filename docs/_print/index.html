@@ -109,7 +109,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e14d592e75b678797d97c8a5c3699cae.json"
+  data-offline-search-index-json-src="/offline-search-index.631dc352921d2d1941f1539cb01c1103.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -441,7 +441,7 @@ if (!doNotTrack) {
     
     
 	
-<li>7.1: <a href="#pg-bad090fb2cf8760959c32a46050dfe29">v0.1.0</a></li>
+<li>7.1: <a href="#pg-bad090fb2cf8760959c32a46050dfe29"></a></li>
 
 
     
@@ -468,7 +468,7 @@ if (!doNotTrack) {
     
     
 	
-<li>8.1: <a href="#pg-97a198d5259bda8fcb0a5fb28d1fba87">v0.1.2</a></li>
+<li>8.1: <a href="#pg-97a198d5259bda8fcb0a5fb28d1fba87">性能测试</a></li>
 
 
     
@@ -609,12 +609,12 @@ if (!doNotTrack) {
 <p>我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">info</span>
 </code></pre></div><h3 id="12-拉取docker镜像">1.2. 拉取Docker镜像</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><h3 id="13-启动容器">1.3. 启动容器</h3>
 <h5 id="131-快速启动容器">1.3.1. 快速启动容器</h5>
 <p>使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">run</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">name</span> <span style="color:#000">proxima_be</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><blockquote>
 <p><strong><em>NOTE:</em></strong>  低版本 docker 需要在上述命令中增加<code>--net=host</code>选项</p>
 </blockquote>
@@ -632,7 +632,7 @@ if (!doNotTrack) {
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><h5 id="133-其他容器操作">1.3.3. 其他容器操作</h5>
 <p>停止服务</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">stop</span> <span style="color:#000">proxima_be</span>
@@ -1494,7 +1494,7 @@ binlog_format       = ROW
 </code></pre></div><h4 id="第二步-拉取-mysql-repository-镜像">第二步: 拉取 MySQL Repository 镜像</h4>
 <p><strong>安装前提</strong>见快速入门部分。这里不再赘述。</p>
 <p><strong>拉取 MySQL Repository Docker 镜像</strong>：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><h4 id="第三步-mysql-repository-配置">第三步: MySQL Repository 配置</h4>
 <p>创建配置文件、log 文件、数据文件所存储的路径：</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">mkdir</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000">conf</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">data</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">}</span>
@@ -1514,7 +1514,7 @@ repository_config {
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span> <span style="color:#000">\</span>
+      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">bin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mysql_repository</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">config</span> <span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">mysql_repo.conf</span>
 </code></pre></div><h3 id="33-详细配置">3.3. 详细配置</h3>
 <h4 id="common-config">Common Config:</h4>
@@ -1683,7 +1683,7 @@ repository_config {
     
 	<p>在 Proxima BE 发布的镜像中，附带了几个常用工具，主要是方便客户管理 collection 和文档。</p>
 <h2 id="1-如何获取">1. 如何获取</h2>
-<p>相关工具位于镜像 ghcr.io/proxima/proxima-be 的目录 /var/lib/proxima-be/bin/</p>
+<p>相关工具位于镜像 ghcr.io/alibaba/proxima-be 的目录 /var/lib/proxima-be/bin/</p>
 <h2 id="2-admin_client">2. admin_client</h2>
 <h3 id="21-使用方法">2.1 使用方法</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">admin_client</span>  <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">h</span>
@@ -1737,6 +1737,58 @@ repository_config {
 <p>data数据格式同上述的插入数据格式相同。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">bench_client</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">command</span> <span style="color:#000">delete</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">host</span> <span style="color:#0000cf;font-weight:bold">127.0.0.1</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">collection</span> <span style="color:#000">test_collection</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">column</span> <span style="color:#000">test_column</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">file</span> 
 <span style="color:#000">data.txt</span>
+</code></pre></div><h2 id="4-index_builder">4. index_builder</h2>
+<p>对于数据集已经提前准备好的场景，为加速索引构建，可通过离线构建工具加速构建。</p>
+<h3 id="41-使用方法">4.1 使用方法</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Usage:
+ index_builder &lt;args&gt;
+
+Args:
+ --schema           Specify the schema of collection
+ --file             Specify input data file
+ --output           Sepecify output index directory<span style="color:#ce5c00;font-weight:bold">(</span>default ./<span style="color:#ce5c00;font-weight:bold">)</span>
+ --concurrency      Sepecify threads count <span style="color:#204a87;font-weight:bold">for</span> building index<span style="color:#ce5c00;font-weight:bold">(</span>default 10<span style="color:#ce5c00;font-weight:bold">)</span>
+ --help, -h         Dipslay <span style="color:#204a87">help</span> info
+ --version, -v      Dipslay version info
+</code></pre></div><h3 id="42-数据文件格式说明">4.2 数据文件格式说明</h3>
+<p>每行一条记录，由 &lsquo;;&rsquo; 分隔。分别是 key，向量，正排属性。其中 key 为 uint64 类型，向量各维度用 ' ' 分隔。属性可选。例如</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">111;1.0 1.1 1.2 1.3;a,b
+</code></pre></div><h3 id="43-使用示例">4.3 使用示例</h3>
+<p>test.txt 内容为上述内容的文件。则构建索引可用如下命令:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">index_builder --output index --schema <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;forward_column_names&#34;:[&#34;k1&#34;], &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;,
+</span><span style="color:#4e9a06">&#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:4}]}&#39;</span> --file test.txt
+</code></pre></div><h3 id="43-使用注意">4.3 使用注意</h3>
+<p>由于离线工具构建的索引没有相应 meta 信息。如果作为 Proxima SE 提供检索能力。需要创建一个对应的 collection。
+例如启动 proxima_se 服务时，配置好相应的索引位置为 index:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">common_config {</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">grpc_listen_port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">http_listen_port</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>}<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">index_config {</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">index_directory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;index/&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>}<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">query_config {</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">query_thread_count</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>}<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>启动后，使用如下命令创建相应集合。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -X POST http://0.0.0.0:16001/v1/collection/test_collection -d <span style="color:#4e9a06">&#39;{&#34;collection_name&#34;:&#34;test_collection&#34;, &#34;forward_column_names&#34;:[&#34;k1&#34;], &#34;index_column_params&#34;:[{&#34;column_name&#34;:&#34;test_column&#34;,&#34;index_type&#34;: &#34;IT_PROXIMA_GRAPH_INDEX&#34;, &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;, &#34;dimension&#34;:4}]}&#39;</span>
+</code></pre></div><p>然后进行检索</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -X POST <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  http://0.0.0.0:16001/v1/collection/test_collection/query <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span> -d <span style="color:#4e9a06">&#39;{
+</span><span style="color:#4e9a06">    &#34;knn_param&#34;:{
+</span><span style="color:#4e9a06">        &#34;column_name&#34;:&#34;test_column&#34;,
+</span><span style="color:#4e9a06">        &#34;topk&#34;:10,
+</span><span style="color:#4e9a06">        &#34;matrix&#34;:&#34;[[1.0, 2.0, 3.0, 4.0]]&#34;,
+</span><span style="color:#4e9a06">        &#34;batch_count&#34;:1,
+</span><span style="color:#4e9a06">        &#34;dimension&#34;:4,
+</span><span style="color:#4e9a06">        &#34;data_type&#34;:&#34;DT_VECTOR_FP32&#34;,
+</span><span style="color:#4e9a06">        &#34;is_linear&#34;:true,
+</span><span style="color:#4e9a06">    }
+</span><span style="color:#4e9a06">}&#39;</span>
+
+<span style="color:#8f5902;font-style:italic"># 返回</span>
+<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;status&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;code&#34;</span>:0,<span style="color:#4e9a06">&#34;reason&#34;</span>:<span style="color:#4e9a06">&#34;Success&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>,<span style="color:#4e9a06">&#34;results&#34;</span>:<span style="color:#ce5c00;font-weight:bold">[{</span><span style="color:#4e9a06">&#34;documents&#34;</span>:<span style="color:#ce5c00;font-weight:bold">[{</span><span style="color:#4e9a06">&#34;score&#34;</span>:11.34,<span style="color:#4e9a06">&#34;primary_key&#34;</span>:<span style="color:#4e9a06">&#34;111&#34;</span>,<span style="color:#4e9a06">&#34;forward_column_values&#34;</span>:<span style="color:#ce5c00;font-weight:bold">[{</span><span style="color:#4e9a06">&#34;key&#34;</span>:<span style="color:#4e9a06">&#34;k1&#34;</span>,<span style="color:#4e9a06">&#34;value&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;string_value&#34;</span>:<span style="color:#4e9a06">&#34;a,b&#34;</span><span style="color:#ce5c00;font-weight:bold">}}]}]}]</span>,<span style="color:#4e9a06">&#34;debug_info&#34;</span>:<span style="color:#4e9a06">&#34;&#34;</span>,<span style="color:#4e9a06">&#34;latency_us&#34;</span>:<span style="color:#4e9a06">&#34;902&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div>
 </div>
 
@@ -6453,31 +6505,9 @@ scale: 10
 
 <div class="td-content" style="">
     
-	<h1 id="pg-bad090fb2cf8760959c32a46050dfe29">7.1 - v0.1.0</h1>
+	<h1 id="pg-bad090fb2cf8760959c32a46050dfe29">7.1 - </h1>
     
-	<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>发布时间</td>
-<td>2021.09.22</td>
-</tr>
-<tr>
-<td>Docker镜像</td>
-<td>ghcr.io/proxima/proxima-be:0.1.0</td>
-</tr>
-<tr>
-<td>升级点</td>
-<td>1. 支持集合&amp;索引分片管理 <br>2. 支持文档实时增删查改<br>3. 支持Mysql全量和增量同步 <br>4. 支持正排数据查询<br>5. 支持x86&amp;arm指令集合</td>
-</tr>
-</tbody>
-</table>
-
+	
 </div>
 
 
@@ -6521,238 +6551,961 @@ scale: 10
 
 <div class="td-content" style="">
     
-	<h1 id="pg-97a198d5259bda8fcb0a5fb28d1fba87">8.1 - v0.1.2</h1>
+	<h1 id="pg-97a198d5259bda8fcb0a5fb28d1fba87">8.1 - 性能测试</h1>
     
-	<table>
-<thead>
-<tr>
-<th>Test Environment</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Machine</td>
-<td>type=F51<br/>host=33.11.240.75</td>
-</tr>
-<tr>
-<td>CPU</td>
-<td>cores=42<br/>vcores=84</td>
-</tr>
-<tr>
-<td>Memory</td>
-<td>mem=456G</td>
-</tr>
-<tr>
-<td>Service Params</td>
-<td>query_thread=64 <br/>ef_search=300 <br/>ef_construction=500<br/>topk=10</td>
-</tr>
-</tbody>
-</table>
+	<h1 id="1-测试数据">1. 测试数据</h1>
+<p>5 份公开测试数据集分别从 <a href="https://github.com/erikbern/ann-benchmarks/">ann-benchmarks</a>
+与 <a href="http://big-ann-benchmarks.com/index.html#bench-datasets">big-ann-benchmarks</a> 中选取（为了测试不同数据量级下的性能表现，部分数据集只选取了其中一部分）：</p>
 <table>
 <thead>
 <tr>
-<th>VTS-face Dataset(1 seg)</th>
-<th></th>
+<th>dataset</th>
+<th>dimension</th>
+<th>type</th>
+<th>distance</th>
+<th>datasize</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=1890w<br/>type=FP32<br/>dimension=512<br/>segment=<strong>No Limit</strong></td>
+<td>sift-128-euclidean</td>
+<td>128</td>
+<td>FP32</td>
+<td>Euclidean</td>
+<td>1,000,000</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 1965/s<br/>Average latency: 36054us<br/>Maximum latency: 105544us</td>
+<td>gist-960-euclidean</td>
+<td>960</td>
+<td>FP32</td>
+<td>Euclidean</td>
+<td>1,000,000</td>
 </tr>
 <tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 1305/s<br/>Average latency: 12224us<br/>Maximum latency: 25289us</td>
+<td>deep-image-96-angular</td>
+<td>96</td>
+<td>FP32</td>
+<td>Cosine</td>
+<td>10,000,000</td>
 </tr>
 <tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 2563/s<br/>Average latency: 12556us<br/>Maximum latency: 30060us</td>
+<td>yandex-text-to-image</td>
+<td>200</td>
+<td>FP32</td>
+<td>InnerProduct</td>
+<td>100,000,000</td>
 </tr>
 <tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 2794/s<br/>Average latency: 17167us<br/>Maximum latency: 40343us</td>
-</tr>
-<tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 2840/s<br/>Average latency: 22884us<br/>Maximum latency: 97761us</td>
+<td>yandex-deep</td>
+<td>96</td>
+<td>FP32</td>
+<td>Euclidean</td>
+<td>1,000,000,000</td>
 </tr>
 </tbody>
 </table>
+<h1 id="2-测试环境">2. 测试环境</h1>
+<ul>
+<li>CPU：84 Core（Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz）</li>
+<li>内存：464 GiB</li>
+<li>磁盘：SSD</li>
+<li>GCC：8.3.0</li>
+<li>指令集：Intel skylake-avx512</li>
+</ul>
+<h1 id="3-测试说明">3. 测试说明</h1>
+<ul>
+<li>数据集分别采用 fp32/fp16/int8/int4 四类类型量化方式进行测试</li>
+<li>索引构建采用 index_builder 工具来进行索引的构建</li>
+<li>性能测试采用 bench_client 测试工具进行性能测试</li>
+<li>构建采用图索引类型，相关参数为：max_neighbor_count=64，ef_search=200，ef_construction=500。例如如采用 Int8 量化，索引构建时使用的 schema 如下：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#204a87;font-weight:bold">&#34;collection_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;yandex&#34;</span><span style="color:#000;font-weight:bold">,</span>
+  <span style="color:#204a87;font-weight:bold">&#34;index_column_params&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+    <span style="color:#000;font-weight:bold">{</span>
+      <span style="color:#204a87;font-weight:bold">&#34;column_name&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;feature&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;index_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;IT_PROXIMA_GRAPH_INDEX&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;extra_params&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+        <span style="color:#000;font-weight:bold">{</span>
+          <span style="color:#204a87;font-weight:bold">&#34;key&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;quantize_type&#34;</span><span style="color:#000;font-weight:bold">,</span>
+          <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DT_VECTOR_INT8&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+          <span style="color:#204a87;font-weight:bold">&#34;key&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;engine&#34;</span><span style="color:#000;font-weight:bold">,</span>
+          <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;HNSW&#34;</span>
+        <span style="color:#000;font-weight:bold">},</span>
+        <span style="color:#000;font-weight:bold">{</span>
+          <span style="color:#204a87;font-weight:bold">&#34;key&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;max_neighbor_count&#34;</span><span style="color:#000;font-weight:bold">,</span>
+          <span style="color:#204a87;font-weight:bold">&#34;value&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;64&#34;</span>
+        <span style="color:#000;font-weight:bold">}</span>
+      <span style="color:#000;font-weight:bold">],</span>
+      <span style="color:#204a87;font-weight:bold">&#34;data_type&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;DT_VECTOR_FP32&#34;</span><span style="color:#000;font-weight:bold">,</span>
+      <span style="color:#204a87;font-weight:bold">&#34;dimension&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#0000cf;font-weight:bold">96</span>
+    <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#000;font-weight:bold">]</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></div><h1 id="3-测试结果">3. 测试结果</h1>
+<h2 id="31-sift-128-euclidean">3.1 sift-128-euclidean</h2>
+<h3 id="311-构建信息">3.1.1 构建信息</h3>
 <table>
 <thead>
 <tr>
-<th>VTS-face Dataset(2 seg)</th>
-<th></th>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=1890w<br/>type=FP32<br/>dimension=512<br/>segment=<strong>1000w</strong></td>
+<td>索引大小</td>
+<td>734M</td>
+<td>490M</td>
+<td>399M</td>
+<td>329M</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 2085/s<br/>Average latency: 33463us<br/>Maximum latency: 101366us</td>
-</tr>
-<tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 1081/s<br/>Average latency: 15104us<br/>Maximum latency: 35672us</td>
-</tr>
-<tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 1148/s<br/>Average latency: 28201us<br/>Maximum latency: 105417us</td>
-</tr>
-<tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 1162/s<br/>Average latency: 41144us<br/>Maximum latency: 146889us</td>
-</tr>
-<tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 1200/s<br/>Average latency: 53940us<br/>Maximum latency: 97658us</td>
+<td>构建时间</td>
+<td>66s</td>
+<td>57s</td>
+<td>50s</td>
+<td>48s</td>
 </tr>
 </tbody>
 </table>
+<h3 id="312-查询性能">3.1.2 查询性能</h3>
 <table>
 <thead>
 <tr>
-<th>Pailitao Dataset(1 seg)</th>
-<th></th>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=1999w<br/>type=FP32<br/>dimension=512<br/>segment=<strong>No Limit</strong></td>
+<td>1 并发 QPS/RT</td>
+<td>811/s	1132us</td>
+<td>922/s 980us</td>
+<td>982/s	932us</td>
+<td>1058/s	879us</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 1868/s<br/>Average latency: 34348us<br/>Maximum latency: 110219us</td>
+<td>8 并发 QPS/RT</td>
+<td>6533/s 1212us</td>
+<td>7326/s	1084us</td>
+<td>7868/s 1011us</td>
+<td>8636/s	924us</td>
 </tr>
 <tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 1326/s<br/>Average latency: 12059us<br/>Maximum latency: 36241us</td>
+<td>16 并发 QPS/RT</td>
+<td>12273/s 1339us</td>
+<td>14579/s 1165us</td>
+<td>15860/s 1077us</td>
+<td>15997/s 963us</td>
 </tr>
 <tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 2594/s<br/>Average latency: 12274us<br/>Maximum latency: 34152us</td>
+<td>24 并发 QPS/RT</td>
+<td>15846/s 1454us</td>
+<td>18820/s 1261us</td>
+<td>20171/s	1140us</td>
+<td>22213/s 1029us</td>
 </tr>
 <tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 2897/s<br/>Average latency: 16517us<br/>Maximum latency: 40627us</td>
+<td>32 并发 QPS/RT</td>
+<td>20671/s 1562us</td>
+<td>23389/s 1343us</td>
+<td>26223/s	1192us</td>
+<td>28353/s 1089us</td>
 </tr>
 <tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 2967/s<br/>Average latency: 21686us<br/>Maximum latency: 89368us</td>
+<td>48 并发 QPS/RT</td>
+<td>24579/s 1898us</td>
+<td>29864/s	1547us</td>
+<td>34159/s 1364us</td>
+<td>38135/s 1231us</td>
+</tr>
+<tr>
+<td>64 并发 QPS/RT</td>
+<td>26829/s 2301us</td>
+<td>35575/s 1723us</td>
+<td>41072/s 1512us</td>
+<td>45778/s 1379us</td>
 </tr>
 </tbody>
 </table>
+<p><img src="/images/sift-128-euclidean-qps.png" alt="QPS"></p>
+<p><img src="/images/sift-128-euclidean-rt.png" alt="RT"></p>
+<h3 id="313-召回率">3.1.3 召回率</h3>
 <table>
 <thead>
 <tr>
-<th>Pailitao Dataset(2 seg)</th>
-<th></th>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=1999w<br/>type=FP32<br/>dimension=512<br/>segment=<strong>1000w</strong></td>
+<td>Top 1 召回率</td>
+<td>99.99%</td>
+<td>99.99%</td>
+<td>96.33%</td>
+<td>61.46%</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 1934/s<br/>Average latency: 33118us<br />Maximum latency: 97145us</td>
+<td>Top 10 召回率</td>
+<td>99.94%</td>
+<td>99.94%</td>
+<td>97.25%</td>
+<td>71.88%</td>
 </tr>
 <tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 1131/s<br/>Average latency: 14103us<br/>Maximum latency: 31110us</td>
+<td>Top 20 召回率</td>
+<td>99.89%</td>
+<td>99.89%</td>
+<td>97.54%</td>
+<td>74.48%</td>
 </tr>
 <tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 1106/s<br/>Average latency: 27734us<br/>Maximum latency: 114401us</td>
+<td>Top 30 召回率</td>
+<td>99.84%</td>
+<td>99.84%</td>
+<td>97.68%</td>
+<td>75.76%</td>
 </tr>
 <tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 1178/s<br/>Average latency: 40740us<br/>Maximum latency: 91339us</td>
+<td>Top 40 召回率</td>
+<td>99.79%</td>
+<td>99.79%</td>
+<td>97.82%</td>
+<td>76.58%</td>
 </tr>
 <tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 1183/s<br/>Average latency: 54144us<br/>Maximum latency: 94088us</td>
+<td>Top 50 召回率</td>
+<td>99.74%</td>
+<td>99.74%</td>
+<td>97.85%</td>
+<td>77.28%</td>
+</tr>
+<tr>
+<td>Top 60 召回率</td>
+<td>99.68%</td>
+<td>99.68%</td>
+<td>97.88%</td>
+<td>77.82%</td>
+</tr>
+<tr>
+<td>Top 70 召回率</td>
+<td>99.61%</td>
+<td>99.61%</td>
+<td>97.90%</td>
+<td>78.21%</td>
+</tr>
+<tr>
+<td>Top 80 召回率</td>
+<td>99.54%</td>
+<td>99.54%</td>
+<td>97.91%</td>
+<td>78.58%</td>
+</tr>
+<tr>
+<td>Top 90 召回率</td>
+<td>99.47%</td>
+<td>99.46%</td>
+<td>97.91%</td>
+<td>78.90%</td>
+</tr>
+<tr>
+<td>Top 100 召回率</td>
+<td>99.39%</td>
+<td>99.39%</td>
+<td>97.92%</td>
+<td>79.19%</td>
 </tr>
 </tbody>
 </table>
+<p><img src="/images/sift-128-euclidean-recall.png" alt="Recall"></p>
+<h2 id="32-gist-960-euclidean">3.2 gist-960-euclidean</h2>
+<h3 id="321-构建信息">3.2.1 构建信息</h3>
 <table>
 <thead>
 <tr>
-<th>Pailitao Bianry Dataset(1 seg)</th>
-<th></th>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=9999w<br/>type=binary<br/>dimension=512<br/>segment=<strong>No Limit</strong></td>
+<td>索引大小</td>
+<td>3.8G</td>
+<td>2.0G</td>
+<td>1.2G</td>
+<td>686M</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 6453/s<br/>Average latency: 9806us<br/>Maximum latency: 116754us</td>
-</tr>
-<tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 2933/s<br/>Average latency: 5724us<br/>Maximum latency: 24253us</td>
-</tr>
-<tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 6795/s<br/>Average latency: 4789us<br/>Maximum latency: 25856us</td>
-</tr>
-<tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 10081/s<br/>Average latency: 4923us<br/>Maximum latency: 85046us</td>
-</tr>
-<tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 9956/s<br/>Average latency: 5690us<br/>Maximum latency: 57644us</td>
+<td>构建时间</td>
+<td>411s</td>
+<td>257s</td>
+<td>164s</td>
+<td>157s</td>
 </tr>
 </tbody>
 </table>
+<h3 id="322-查询性能">3.2.2 查询性能</h3>
 <table>
 <thead>
 <tr>
-<th>Pailitao Bianry Dataset(10 seg)</th>
-<th></th>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Data description</td>
-<td>scale=9999w<br/>type=binary<br/>dimension=512<br/>segment=<strong>1000w</strong></td>
+<td>1 并发 QPS/RT</td>
+<td>221/s	4230us</td>
+<td>235/s	3978us</td>
+<td>391/s	2518us</td>
+<td>400/s	2398us</td>
 </tr>
 <tr>
-<td>Insert Perf(@64)</td>
-<td>Average qps    : 9484/s<br/>Average latency: 6803us<br/>Maximum latency: 34860us</td>
+<td>8 并发 QPS/RT</td>
+<td>1722/s	4625us</td>
+<td>1868/s	4257us</td>
+<td>3051/s	2593us</td>
+<td>3204/s	2483us</td>
 </tr>
 <tr>
-<td>Query Perf(@16)</td>
-<td>Average qps    : 1595/s<br/>Average latency: 10163us<br/>Maximum latency: 30655us</td>
+<td>16 并发 QPS/RT</td>
+<td>2948/s	5179us</td>
+<td>3676/s	4410us</td>
+<td>5920/s	2694us</td>
+<td>6224/s	2550us</td>
 </tr>
 <tr>
-<td>Query Perf(@32)</td>
-<td>Average qps    : 1642/s<br/>Average latency: 19791us<br/>Maximum latency: 39849us</td>
+<td>24 并发 QPS/RT</td>
+<td>3835/s	6333us</td>
+<td>4876/s	4951us</td>
+<td>7975/s	3046us</td>
+<td>8689/s	2744us</td>
 </tr>
 <tr>
-<td>Query Perf(@48)</td>
-<td>Average qps    : 1630/s<br/>Average latency: 29299us<br/>Maximum latency: 41211us</td>
+<td>32 并发 QPS/RT</td>
+<td>4218/s	7652us</td>
+<td>6135/s	5242us</td>
+<td>10005/s	3179us</td>
+<td>11013/s	2870us</td>
 </tr>
 <tr>
-<td>Query Perf(@64)</td>
-<td>Average qps    : 1624/s<br/>Average latency: 39527us<br/>Maximum latency: 64230us</td>
+<td>48 并发 QPS/RT</td>
+<td>4308/s	11180us</td>
+<td>6935/s	6956us</td>
+<td>11896/s	4054us</td>
+<td>14549/s	3302us</td>
+</tr>
+<tr>
+<td>64 并发 QPS/RT</td>
+<td>4396/s	14622us</td>
+<td>7295/s	8817us</td>
+<td>12418/s	5077us</td>
+<td>17216/s	3761us</td>
 </tr>
 </tbody>
 </table>
+<p><img src="/images/gist-960-euclidean-qps.png" alt="QPS"></p>
+<p><img src="/images/gist-960-euclidean-rt.png" alt="RT"></p>
+<h3 id="323-召回率">3.2.3 召回率</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top 1 召回率</td>
+<td>99.68%</td>
+<td>99.66%</td>
+<td>96.06%</td>
+<td>55.64%</td>
+</tr>
+<tr>
+<td>Top 10 召回率</td>
+<td>99.43%</td>
+<td>99.34%</td>
+<td>96.76%</td>
+<td>66.81%</td>
+</tr>
+<tr>
+<td>Top 20 召回率</td>
+<td>99.19%</td>
+<td>99.10%</td>
+<td>96.96%</td>
+<td>69.53%</td>
+</tr>
+<tr>
+<td>Top 30 召回率</td>
+<td>98.98%</td>
+<td>98.91%</td>
+<td>97.00%</td>
+<td>70.96%</td>
+</tr>
+<tr>
+<td>Top 40 召回率</td>
+<td>98.78%</td>
+<td>98.70%</td>
+<td>97.02%</td>
+<td>71.91%</td>
+</tr>
+<tr>
+<td>Top 50 召回率</td>
+<td>98.57%</td>
+<td>98.50%</td>
+<td>96.94%</td>
+<td>72.48%</td>
+</tr>
+<tr>
+<td>Top 60 召回率</td>
+<td>98.38%</td>
+<td>98.32%</td>
+<td>96.86%</td>
+<td>73.02%</td>
+</tr>
+<tr>
+<td>Top 70 召回率</td>
+<td>98.18%</td>
+<td>98.12%</td>
+<td>96.76%</td>
+<td>73.47%</td>
+</tr>
+<tr>
+<td>Top 80 召回率</td>
+<td>97.98%</td>
+<td>97.92%</td>
+<td>96.68%</td>
+<td>73.82%</td>
+</tr>
+<tr>
+<td>Top 90 召回率</td>
+<td>97.79%</td>
+<td>97.73%</td>
+<td>96.57%</td>
+<td>74.11%</td>
+</tr>
+<tr>
+<td>Top 100 召回率</td>
+<td>97.63%</td>
+<td>97.57%</td>
+<td>96.48%</td>
+<td>74.40%</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/gist-960-euclidean-recall.png" alt="Recall"></p>
+<h2 id="33-deep-image-96-angular">3.3 deep-image-96-angular</h2>
+<h3 id="331-构建信息">3.3.1 构建信息</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>索引大小</td>
+<td>6.3G</td>
+<td>4.6G</td>
+<td>4.0G</td>
+<td>3.3G</td>
+</tr>
+<tr>
+<td>构建时间</td>
+<td>854s</td>
+<td>671s</td>
+<td>597s</td>
+<td>550s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="332-查询性能">3.3.2 查询性能</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 并发 QPS/RT</td>
+<td>646/s	1547us</td>
+<td>750/s	1333us</td>
+<td>729/s	1352us</td>
+<td>736/s	1345us</td>
+</tr>
+<tr>
+<td>8 并发 QPS/RT</td>
+<td>4910/s	1602us</td>
+<td>5891/s	1349us</td>
+<td>5756/s	1410us</td>
+<td>5817/s	1367us</td>
+</tr>
+<tr>
+<td>16 并发 QPS/RT</td>
+<td>9100/s	1696us</td>
+<td>11055/s	1408us</td>
+<td>10474/s	1462us</td>
+<td>11222/s	1449us</td>
+</tr>
+<tr>
+<td>24 并发 QPS/RT</td>
+<td>12915/s	1860us</td>
+<td>15766/s	1520us</td>
+<td>15379/s	1560us</td>
+<td>15679/s	1538us</td>
+</tr>
+<tr>
+<td>32 并发 QPS/RT</td>
+<td>15917/s	1998us</td>
+<td>19746/s	1611us</td>
+<td>19252/s	1659us</td>
+<td>19545/s	1625us</td>
+</tr>
+<tr>
+<td>48 并发 QPS/RT</td>
+<td>19863/s	2423us</td>
+<td>25792/s	1852us</td>
+<td>24753/s	1929us</td>
+<td>25421/s	1883us</td>
+</tr>
+<tr>
+<td>64 并发 QPS/RT</td>
+<td>22562/s	2825us</td>
+<td>30531/s	2101us</td>
+<td>29083/s	2184us</td>
+<td>30160/s	2107us</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/deep-image-96-angular-qps.png" alt="QPS"></p>
+<p><img src="/images/deep-image-96-angular-rt.png" alt="RT"></p>
+<h3 id="333-召回率">3.3.3 召回率</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top 1 召回率</td>
+<td>99.68%</td>
+<td>99.66%</td>
+<td>96.06%</td>
+<td>55.64%</td>
+</tr>
+<tr>
+<td>Top 10 召回率</td>
+<td>99.43%</td>
+<td>99.34%</td>
+<td>96.76%</td>
+<td>66.81%</td>
+</tr>
+<tr>
+<td>Top 20 召回率</td>
+<td>99.19%</td>
+<td>99.10%</td>
+<td>96.96%</td>
+<td>69.53%</td>
+</tr>
+<tr>
+<td>Top 30 召回率</td>
+<td>98.98%</td>
+<td>98.91%</td>
+<td>97.00%</td>
+<td>70.96%</td>
+</tr>
+<tr>
+<td>Top 40 召回率</td>
+<td>98.78%</td>
+<td>98.70%</td>
+<td>97.02%</td>
+<td>71.91%</td>
+</tr>
+<tr>
+<td>Top 50 召回率</td>
+<td>98.57%</td>
+<td>98.50%</td>
+<td>96.94%</td>
+<td>72.48%</td>
+</tr>
+<tr>
+<td>Top 60 召回率</td>
+<td>98.38%</td>
+<td>98.32%</td>
+<td>96.86%</td>
+<td>73.02%</td>
+</tr>
+<tr>
+<td>Top 70 召回率</td>
+<td>98.18%</td>
+<td>98.12%</td>
+<td>96.76%</td>
+<td>73.47%</td>
+</tr>
+<tr>
+<td>Top 80 召回率</td>
+<td>97.98%</td>
+<td>97.92%</td>
+<td>96.68%</td>
+<td>73.82%</td>
+</tr>
+<tr>
+<td>Top 90 召回率</td>
+<td>97.79%</td>
+<td>97.73%</td>
+<td>96.57%</td>
+<td>74.11%</td>
+</tr>
+<tr>
+<td>Top 100 召回率</td>
+<td>97.63%</td>
+<td>97.57%</td>
+<td>96.48%</td>
+<td>74.40%</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/deep-image-96-angular-recall.png" alt="Recall"></p>
+<h2 id="34-yandex-text-to-image">3.4 yandex-text-to-image</h2>
+<h3 id="341-构建信息">3.4.1 构建信息</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>索引大小</td>
+<td>100G</td>
+<td>64G</td>
+<td>46G</td>
+<td>37G</td>
+</tr>
+<tr>
+<td>构建时间</td>
+<td>4h</td>
+<td>2.7h</td>
+<td>2.5h</td>
+<td>2.1h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="342-查询性能">3.4.2 查询性能</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 并发 QPS/RT</td>
+<td>500/s	1999us</td>
+<td>530/s	1942us</td>
+<td>565/s	1821us</td>
+<td>572/s	1765us</td>
+</tr>
+<tr>
+<td>8 并发 QPS/RT</td>
+<td>3839/s	2151us</td>
+<td>4175/s	1967us</td>
+<td>4251/s	1846us</td>
+<td>4366/s	1832us</td>
+</tr>
+<tr>
+<td>16 并发 QPS/RT</td>
+<td>6606/s	2275us</td>
+<td>7207/s	2067us</td>
+<td>8023/s	1915us</td>
+<td>8404/s	1881us</td>
+</tr>
+<tr>
+<td>24 并发 QPS/RT</td>
+<td>9746/s	2534us</td>
+<td>10172/s	2280us</td>
+<td>11246/s	2082us</td>
+<td>11887/s	2060us</td>
+</tr>
+<tr>
+<td>32 并发 QPS/RT</td>
+<td>11368/s	2847us</td>
+<td>13136/s	2375us</td>
+<td>14709/s	2189us</td>
+<td>15081/s	2140us</td>
+</tr>
+<tr>
+<td>48 并发 QPS/RT</td>
+<td>12888/s	3708us</td>
+<td>16914/s	2894us</td>
+<td>18466/s	2591us</td>
+<td>19356/s	2467us</td>
+</tr>
+<tr>
+<td>64 并发 QPS/RT</td>
+<td>13523/s	4711us</td>
+<td>18051/s	3517us</td>
+<td>20718/s	3018us</td>
+<td>22637/s	2823us</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/yandex-text-to-image-qps.png" alt="QPS"></p>
+<p><img src="/images/yandex-text-to-image-rt.png" alt="RT"></p>
+<h3 id="343-召回率">3.4.3 召回率</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>FP32</th>
+<th>FP16</th>
+<th>INT8</th>
+<th>INT4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top 1 召回率</td>
+<td>99.80%</td>
+<td>99.75%</td>
+<td>98.07%</td>
+<td>69.50%</td>
+</tr>
+<tr>
+<td>Top 10 召回率</td>
+<td>99.80%</td>
+<td>99.69%</td>
+<td>97.78%</td>
+<td>74.08%</td>
+</tr>
+<tr>
+<td>Top 20 召回率</td>
+<td>99.72%</td>
+<td>99.59%</td>
+<td>97.73%</td>
+<td>75.07%</td>
+</tr>
+<tr>
+<td>Top 30 召回率</td>
+<td>99.61%</td>
+<td>99.48%</td>
+<td>97.91%</td>
+<td>75.83%</td>
+</tr>
+<tr>
+<td>Top 40 召回率</td>
+<td>99.52%</td>
+<td>99.39%</td>
+<td>97.84%</td>
+<td>76.58%</td>
+</tr>
+<tr>
+<td>Top 50 召回率</td>
+<td>99.44%</td>
+<td>99.31%</td>
+<td>97.92%</td>
+<td>77.11%</td>
+</tr>
+<tr>
+<td>Top 60 召回率</td>
+<td>99.35%</td>
+<td>99.22%</td>
+<td>97.90%</td>
+<td>77.56%</td>
+</tr>
+<tr>
+<td>Top 70 召回率</td>
+<td>99.26%</td>
+<td>99.13%</td>
+<td>97.87%</td>
+<td>77.95%</td>
+</tr>
+<tr>
+<td>Top 80 召回率</td>
+<td>99.15%</td>
+<td>99.03%</td>
+<td>97.85%</td>
+<td>78.31%</td>
+</tr>
+<tr>
+<td>Top 90 召回率</td>
+<td>99.08%</td>
+<td>98.96%</td>
+<td>97.85%</td>
+<td>78.62%</td>
+</tr>
+<tr>
+<td>Top 100 召回率</td>
+<td>98.99%</td>
+<td>98.87%</td>
+<td>97.77%</td>
+<td>78.83%</td>
+</tr>
+</tbody>
+</table>
+<p>![Recall](/images/yandex-text-to-image-recall.png</p>
+<h2 id="35-yandex-deep">3.5 yandex-deep</h2>
+<h3 id="351-构建信息">3.5.1 构建信息</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>INT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>索引大小</td>
+<td>386G</td>
+</tr>
+<tr>
+<td>构建时间</td>
+<td>71h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="352-查询性能">3.5.2 查询性能</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>INT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 并发 QPS/RT</td>
+<td>417/s	2398us</td>
+</tr>
+<tr>
+<td>8 并发 QPS/RT</td>
+<td>3393/s	2574us</td>
+</tr>
+<tr>
+<td>16 并发 QPS/RT</td>
+<td>5886/s	2793us</td>
+</tr>
+<tr>
+<td>24 并发 QPS/RT</td>
+<td>7368/s	3257us</td>
+</tr>
+<tr>
+<td>32 并发 QPS/RT</td>
+<td>8085/s	3918us</td>
+</tr>
+<tr>
+<td>48 并发 QPS/RT</td>
+<td>8933/s	5556us</td>
+</tr>
+<tr>
+<td>64 并发 QPS/RT</td>
+<td>8536/s	7554us</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/yandex-deep-qps.png" alt="QPS"></p>
+<p><img src="/images/yandex-deep-rt.png" alt="RT"></p>
+<h3 id="353-召回率">3.5.3 召回率</h3>
+<table>
+<thead>
+<tr>
+<th>量化类型</th>
+<th>INT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top 1 召回率</td>
+<td>92.07%</td>
+</tr>
+<tr>
+<td>Top 10 召回率</td>
+<td>93.11%</td>
+</tr>
+<tr>
+<td>Top 20 召回率</td>
+<td>93.05%</td>
+</tr>
+<tr>
+<td>Top 30 召回率</td>
+<td>92.88%</td>
+</tr>
+<tr>
+<td>Top 40 召回率</td>
+<td>92.59%</td>
+</tr>
+<tr>
+<td>Top 50 召回率</td>
+<td>92.27%</td>
+</tr>
+<tr>
+<td>Top 60 召回率</td>
+<td>91.96%</td>
+</tr>
+<tr>
+<td>Top 70 召回率</td>
+<td>91.63%</td>
+</tr>
+<tr>
+<td>Top 80 召回率</td>
+<td>91.30%</td>
+</tr>
+<tr>
+<td>Top 90 召回率</td>
+<td>91.00%</td>
+</tr>
+<tr>
+<td>Top 100 召回率</td>
+<td>90.64%</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/yandex-deep-recall.png" alt="Recall"></p>
 
 </div>
 
