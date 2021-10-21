@@ -29,7 +29,7 @@
 图片特征抽取 为了实现图片搜索，需要从图片中抽取特征向量，用于建立向量索引并做 KNN 检索。一般是通过深度学习模型中的最后一层全连接层作为描述图片的特征。在这里，我们选用预训练好的 ResNet18 模型来抽取图片特征，其输入要求至少为 224*224 的 RGB 图片且已经做过标准化，输出特征为 512 维的float。
 class FeatureExtractor(object): def __init__(self): self.model = models.resnet18(pretrained=True) self.model.eval() self.layer = self.model._modules.get(&#34;avgpool&#34;) self.transform_pipeline = transforms.Compose([transforms.Resize((224, 224)), transforms.ToTensor(), transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]) def get_feature(self, img): t_img = Variable(self.transform_pipeline(img)).unsqueeze(0) feat_vec = torch.zeros(512) def copy_data(m, i, o): feat_vec.copy_(o.data.squeeze()) h = self.layer.register_forward_hook(copy_data) self.model(t_img) h.remove() return feat_vec.tolist() fe = FeatureExtractor() 为了满足 ResNet18 的要求，我们定义了 transform_pipeline 来做图片 resize 和标准化。然后获取 avgpool 层，在 get_feature 中通过注册钩子来将特征数据拷贝到 feat_vec 中。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/docs/gettingstarted/usecases/image_search/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="/docs/usecases/image_search/" /><meta property="article:section" content="docs" />
 
 <meta property="og:site_name" content="Proxima" />
 
@@ -121,7 +121,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.631dc352921d2d1941f1539cb01c1103.json"
+  data-offline-search-index-json-src="/offline-search-index.2642cd59c6124a4d48dd17e985a2903c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -148,7 +148,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.631dc352921d2d1941f1539cb01c1103.json"
+  data-offline-search-index-json-src="/offline-search-index.2642cd59c6124a4d48dd17e985a2903c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -164,20 +164,13 @@ if (!doNotTrack) {
   <ul class="ul-1">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsintroductionintroduction-li">
   <a href="/docs/introduction/introduction/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsintroductionintroduction"><span class="">简介</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsgettingstarted-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsgettingstarted-li">
   <a href="/docs/gettingstarted/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsgettingstarted"><span class="">快速开始</span></a>
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgettingstartedinstallation-li">
   <a href="/docs/gettingstarted/installation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedinstallation"><span class="">安装指南</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsgettingstartedexample_usage-li">
   <a href="/docs/gettingstarted/example_usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedexample_usage"><span class="">使用样例</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsgettingstartedusecases-li">
-  <a href="/docs/gettingstarted/usecases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsgettingstartedusecases"><span class="">用户案例</span></a>
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsgettingstartedusecasesimage_search-li">
-  <a href="/docs/gettingstarted/usecases/image_search/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsgettingstartedusecasesimage_search"><span class="td-sidebar-nav-active-item">图片搜索</span></a>
-</li>
-  </ul>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsadvancedguides-li">
@@ -215,6 +208,13 @@ if (!doNotTrack) {
   <a href="/docs/sdkreference/java/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencejava"><span class="">Java SDK</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docssdkreferencego-li">
   <a href="/docs/sdkreference/go/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-docssdkreferencego"><span class="">Golang SDK</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docsusecases-li">
+  <a href="/docs/usecases/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-docsusecases"><span class="">案例教程</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsusecasesimage_search-li">
+  <a href="/docs/usecases/image_search/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-docsusecasesimage_search"><span class="td-sidebar-nav-active-item">图片搜索</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-docsfaq-li">
@@ -273,7 +273,7 @@ if (!doNotTrack) {
 
 
 
-<a id="print" href="/docs/gettingstarted/usecases/_print/"><i class="fa fa-print fa-fw"></i> 整节打印</a>
+<a id="print" href="/docs/usecases/_print/"><i class="fa fa-print fa-fw"></i> 整节打印</a>
 
 
 
@@ -332,9 +332,6 @@ if (!doNotTrack) {
 
 
 
-
-
-
 <li class="breadcrumb-item" >
 	<a href="/docs/">文档</a>
 </li>
@@ -343,21 +340,14 @@ if (!doNotTrack) {
 
 
 <li class="breadcrumb-item" >
-	<a href="/docs/gettingstarted/">快速开始</a>
-</li>
-
-
-
-
-<li class="breadcrumb-item" >
-	<a href="/docs/gettingstarted/usecases/">用户案例</a>
+	<a href="/docs/usecases/">案例教程</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="/docs/gettingstarted/usecases/image_search/">图片搜索</a>
+	<a href="/docs/usecases/image_search/">图片搜索</a>
 </li>
 
 	</ol>
