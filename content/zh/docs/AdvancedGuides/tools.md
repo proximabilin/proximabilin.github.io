@@ -13,7 +13,7 @@ draft: false
 
 ## 1. 如何获取
 
-相关工具位于镜像 ghcr.io/alibaba/proxima-be 的目录 /var/lib/proxima-be/bin/
+相关工具位于镜像 ghcr.io/proximabilin/proxima-be 的目录 /var/lib/proxima-be/bin/
 
 ## 2. admin_client
 
