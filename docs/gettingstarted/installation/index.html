@@ -27,8 +27,8 @@
 <meta property="og:title" content="安装指南" />
 <meta property="og:description" content="ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的 RedHat 系列 Linux 发行版本，包括 RHEL、Centos、taobao7u 等，支持 x86/x64 和 aarch64 等体系架构。
 1. Docker 镜像安装 1.1. 安装前提 我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态
-$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/alibaba/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
-$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/alibaba/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
+$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/proximabilin/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
+$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/proximabilin/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
  1.3.2. 映射文件启动容器 通过将本机目录映射到容器，在容器删除时数据文件仍然可用。
  创建相关目录，修改配置文件  $ mkdir -p $HOME/proxima-be/{conf,data,log} $ vim /$HOME/proxima-be/conf/proxima_be.conf # 镜像中有默认配置 /var/lib/proxima-be/conf/proxima_be." />
 <meta property="og:type" content="article" />
@@ -39,8 +39,8 @@ $ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/a
 <meta itemprop="name" content="安装指南">
 <meta itemprop="description" content="ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的 RedHat 系列 Linux 发行版本，包括 RHEL、Centos、taobao7u 等，支持 x86/x64 和 aarch64 等体系架构。
 1. Docker 镜像安装 1.1. 安装前提 我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态
-$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/alibaba/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
-$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/alibaba/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
+$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/proximabilin/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
+$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/proximabilin/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
  1.3.2. 映射文件启动容器 通过将本机目录映射到容器，在容器删除时数据文件仍然可用。
  创建相关目录，修改配置文件  $ mkdir -p $HOME/proxima-be/{conf,data,log} $ vim /$HOME/proxima-be/conf/proxima_be.conf # 镜像中有默认配置 /var/lib/proxima-be/conf/proxima_be.">
 
@@ -49,8 +49,8 @@ $ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/a
 <meta name="twitter:title" content="安装指南"/>
 <meta name="twitter:description" content="ProximaBE 具备极简依赖、快速部署、多平台支持等特点。其目前支持主流的 RedHat 系列 Linux 发行版本，包括 RHEL、Centos、taobao7u 等，支持 x86/x64 和 aarch64 等体系架构。
 1. Docker 镜像安装 1.1. 安装前提 我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态
-$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/alibaba/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
-$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/alibaba/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
+$ sudo docker info 1.2. 拉取Docker镜像 $ docker pull ghcr.io/proximabilin/proxima-be 1.3. 启动容器 1.3.1. 快速启动容器 使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。
+$ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \ ghcr.io/proximabilin/proxima-be  NOTE: 低版本 docker 需要在上述命令中增加--net=host选项
  1.3.2. 映射文件启动容器 通过将本机目录映射到容器，在容器删除时数据文件仍然可用。
  创建相关目录，修改配置文件  $ mkdir -p $HOME/proxima-be/{conf,data,log} $ vim /$HOME/proxima-be/conf/proxima_be.conf # 镜像中有默认配置 /var/lib/proxima-be/conf/proxima_be."/>
 
@@ -130,7 +130,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2642cd59c6124a4d48dd17e985a2903c.json"
+  data-offline-search-index-json-src="/offline-search-index.cb2b4d5022e50d45d3816ae8c02c5c1c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -157,7 +157,7 @@ if (!doNotTrack) {
   aria-label="站内搜索…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2642cd59c6124a4d48dd17e985a2903c.json"
+  data-offline-search-index-json-src="/offline-search-index.cb2b4d5022e50d45d3816ae8c02c5c1c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -391,12 +391,12 @@ if (!doNotTrack) {
 <p>我们推荐安装 1.12.6 以上版本 Docker。用户可以在安装镜像前确认自己的 Docker 版本以及状态</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">info</span>
 </code></pre></div><h3 id="12-拉取docker镜像">1.2. 拉取Docker镜像</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">pull</span> <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proximabilin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><h3 id="13-启动容器">1.3. 启动容器</h3>
 <h5 id="131-快速启动容器">1.3.1. 快速启动容器</h5>
 <p>使用容器内置的配置文件来启动服务，便于快速上手。但是容器销毁时数据也会丢失，生产环境部署请用映射文件启动的模式。</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">sudo</span> <span style="color:#000">docker</span> <span style="color:#000">run</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">d</span> <span style="color:#ce5c00;font-weight:bold">--</span><span style="color:#000">name</span> <span style="color:#000">proxima_be</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16000</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16000</span> <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">p</span> <span style="color:#0000cf;font-weight:bold">16001</span><span style="color:#ce5c00;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">16001</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proximabilin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><blockquote>
 <p><strong><em>NOTE:</em></strong>  低版本 docker 需要在上述命令中增加<code>--net=host</code>选项</p>
 </blockquote>
@@ -414,7 +414,7 @@ if (!doNotTrack) {
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">conf</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">data</span> <span style="color:#000">\</span>
       <span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">v</span> <span style="color:#ce5c00;font-weight:bold">$</span><span style="color:#000">HOME</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span><span style="color:#ce5c00;font-weight:bold">:/</span><span style="color:#000">var</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">lib</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">log</span> <span style="color:#000">\</span>
-      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">alibaba</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
+      <span style="color:#000">ghcr.io</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proximabilin</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">proxima</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">be</span>
 </code></pre></div><h5 id="133-其他容器操作">1.3.3. 其他容器操作</h5>
 <p>停止服务</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-s" data-lang="s"><span style="color:#ce5c00;font-weight:bold">$</span> <span style="color:#000">docker</span> <span style="color:#000">stop</span> <span style="color:#000">proxima_be</span>
