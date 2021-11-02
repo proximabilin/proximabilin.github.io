@@ -25,7 +25,7 @@ $ sudo docker info
 ### 1.2. 拉取Docker镜像
 
 ```s
-$ docker pull ghcr.io/alibaba/proxima-be
+$ docker pull ghcr.io/proximabilin/proxima-be
 ```
 
 
@@ -36,7 +36,7 @@ $ docker pull ghcr.io/alibaba/proxima-be
 
 ```s
 $ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \
-      ghcr.io/alibaba/proxima-be
+      ghcr.io/proximabilin/proxima-be
 ```
 
 > **_NOTE:_**  低版本 docker 需要在上述命令中增加`--net=host`选项
@@ -58,7 +58,7 @@ $ sudo docker run -d --name proxima_be -p 16000:16000 -p 16001:16001 \
       -v $HOME/proxima-be/conf:/var/lib/proxima-be/conf \
       -v $HOME/proxima-be/data:/var/lib/proxima-be/data \
       -v $HOME/proxima-be/log:/var/lib/proxima-be/log \
-      ghcr.io/alibaba/proxima-be
+      ghcr.io/proximabilin/proxima-be
 ```
 
 ##### 1.3.3. 其他容器操作
